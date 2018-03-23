@@ -659,3 +659,6 @@ Keeping them simple for now, just spawning with basic EC uniforms, and pretty mu
 	..()
 	var/obj/item/weapon/card/id/torch/stowaway/ID = new(H.loc)
 	H.put_in_hands(ID)
+
+//Civilian outfits, now that we're not strict MilRP.
+
