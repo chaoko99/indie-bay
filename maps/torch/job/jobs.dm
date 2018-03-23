@@ -78,6 +78,7 @@
 		/datum/mil_branch/civilian,
 		/datum/mil_branch/fleet = /decl/hierarchy/outfit/job/torch/crew/command/XO/fleet
 	)
+	alt_titles = list("Bosun")
 	allowed_ranks = list(
 		/datum/mil_rank/fleet/o5,
 		/datum/mil_rank/fleet/o4,
@@ -344,7 +345,7 @@
 
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Commanding Officer and the Executive Officer"
+	supervisors = "the Quartermaster"
 	selection_color = "#68099e"
 	minimal_player_age = 7
 	economic_modifier = 7
@@ -365,7 +366,7 @@
 	department_flag = EXP
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "the Commanding Officer, Executive Officer, and Pathfinder"
+	supervisors = "the Pathfinder and Quartermaster"
 	selection_color = "#68099e"
 	minimal_player_age = 4
 	ideal_character_age = 20
@@ -426,16 +427,14 @@
 	ideal_character_age = 30
 	alt_titles = list(
 		"Maintenance Technician",
-		"Engine Technician",
 		"Damage Control Technician",
 		"EVA Technician",
-		"Electrician",
 		"Atmospheric Technician",
-		"Structural Integrity Specialist",
-		"Electrical Systems Specialist",
 		"Information Systems Technician",
 		"Reactor Technician",
-		"Life Support Systems Specialist"
+		"Life Support Systems Specialist",
+		"Structural Integrity Specialist",
+		"Electrical Systems Specialist"
 		)
 	outfit_type = /decl/hierarchy/outfit/job/torch/crew/engineering/engineer
 	allowed_branches = list(
@@ -475,7 +474,8 @@
 	economic_modifier = 6
 	alt_titles = list(
 		"Biomechanical Engineer",
-		"Mechsuit Technician")
+		"Mechsuit Technician",
+		"Cybernetics Specialist")
 	outfit_type = /decl/hierarchy/outfit/job/torch/crew/engineering/roboticist
 	allowed_branches = list(/datum/mil_branch/civilian)
 	allowed_ranks = list(/datum/mil_rank/civ, /datum/mil_rank/fleet)
@@ -485,7 +485,7 @@
 
 
 /datum/job/warden
-	title = "Brig Officer"
+	title = "Warden"
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Chief of Security"
@@ -497,6 +497,11 @@
 		/datum/mil_branch/civilian,
 		/datum/mil_branch/fleet = /decl/hierarchy/outfit/job/torch/crew/security/brig_officer/fleet
 	)
+	alt_titles = list(
+		"Master at Arms",
+		"Brig Officer"
+	)
+
 	allowed_ranks = list(
 		/datum/mil_rank/fleet/e8,
 		/datum/mil_rank/fleet/e7,
@@ -522,7 +527,8 @@
 	minimal_player_age = 7
 	ideal_character_age = 35
 	alt_titles = list(
-		"Criminal Investigator"
+		"Criminal Investigator",
+		"Detective"
 	)
 	outfit_type = /decl/hierarchy/outfit/job/torch/crew/security/forensic_tech
 	allowed_branches = list(
@@ -545,9 +551,9 @@
 							 /datum/computer_file/program/camera_monitor)
 
 /datum/job/officer
-	title = "Master at Arms"
-	total_positions = 4
-	spawn_positions = 4
+	title = "Security Officer"
+	total_positions = 6
+	spawn_positions = 6
 	supervisors = "the Chief of Security"
 	economic_modifier = 4
 	minimal_player_age = 10
@@ -557,6 +563,10 @@
 	allowed_branches = list(
 		/datum/mil_branch/civilian,
 		/datum/mil_branch/fleet = /decl/hierarchy/outfit/job/torch/crew/security/maa/fleet
+	)
+	alt_titles = list(
+		"Armsman",
+		"Security Contractor"
 	)
 	allowed_ranks = list(
 		/datum/mil_rank/fleet/e2,
