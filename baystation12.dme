@@ -2522,6 +2522,7 @@
 #include "maps\random_ruins\space_ruins\space_ruins.dm"
 #include "maps\torch\torch.dm"
 #include "maps\torch\torch_define.dm"
+#include "maps\torch\structures\torn_flag.dm"
 #include "maps\~mapsystem\map_preferences.dm"
 #include "maps\~mapsystem\map_ranks.dm"
 #include "maps\~mapsystem\maps.dm"

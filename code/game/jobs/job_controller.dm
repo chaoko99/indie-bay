@@ -471,6 +471,10 @@ var/global/datum/controller/occupations/job_master
 
 		if(job.req_admin_notify)
 			to_chat(H, "<b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>")
+		if(H.char_branch.name == "Civilian")
+			to_chat(H, "<span class='notice'><b>As a civilian, the core worlds have gone silent. It’s just you and your crew out here. Keep them alive. Keep the ship running. It’s all we know we have left.</b></span>")
+		if(H.char_branch.name == "Fleet")
+			to_chat(H, "<span class='notice'><b>As a member of the fleet, your final orders from the admiralty were to: preserve sentient life, uphold the morals of your government, and carry on the discipline and traditions of the Fleet.</b></span>")
 
 
 		// EMAIL GENERATION
@@ -505,7 +509,6 @@ var/global/datum/controller/occupations/job_master
 			if(equipped)
 				var/obj/item/clothing/glasses/G = H.glasses
 				G.prescription = 7
-
 		BITSET(H.hud_updateflag, ID_HUD)
 		BITSET(H.hud_updateflag, IMPLOYAL_HUD)
 		BITSET(H.hud_updateflag, SPECIALROLE_HUD)
