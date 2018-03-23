@@ -53,9 +53,6 @@
 /obj/item/weapon/card/id/torch/crew/medical/senior
 	job_access_type = /datum/job/senior_doctor
 
-/obj/item/weapon/card/id/torch/contractor/medical
-	job_access_type = /datum/job/doctor_contractor
-
 /obj/item/weapon/card/id/torch/contractor/chemist
 	job_access_type = /datum/job/chemist
 
@@ -84,9 +81,6 @@
 
 /obj/item/weapon/card/id/torch/crew/engineering/senior
 	job_access_type = /datum/job/senior_engineer
-
-/obj/item/weapon/card/id/torch/contractor/engineering
-	job_access_type = /datum/job/engineer_contractor
 
 /obj/item/weapon/card/id/torch/contractor/engineering/roboticist
 	job_access_type = /datum/job/roboticist

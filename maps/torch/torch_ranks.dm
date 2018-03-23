@@ -1,32 +1,25 @@
 /datum/map/torch
 	branch_types = list(
-		/datum/mil_branch/expeditionary_corps,
 		/datum/mil_branch/fleet,
 		/datum/mil_branch/civilian
 	)
 
 	spawn_branch_types = list(
-		/datum/mil_branch/expeditionary_corps,
 		/datum/mil_branch/fleet,
 		/datum/mil_branch/civilian
 	)
 
 	species_to_branch_whitelist = list(
-		/datum/species/diona   = list(/datum/mil_branch/civilian),
-		/datum/species/nabber  = list(/datum/mil_branch/civilian),
-		/datum/species/tajaran = list(/datum/mil_branch/civilian, /datum/mil_branch/expeditionary_corps),
-		/datum/species/skrell  = list(/datum/mil_branch/civilian, /datum/mil_branch/expeditionary_corps),
-		/datum/species/unathi  = list(/datum/mil_branch/civilian),
-		/datum/species/vox     = list()
+		/datum/species/diona   = list(/datum/mil_branch/civilian, /datum/mil_branch/fleet),
+		/datum/species/nabber  = list(/datum/mil_branch/civilian, /datum/mil_branch/fleet),
+		/datum/species/tajaran = list(/datum/mil_branch/civilian, /datum/mil_branch/fleet),
+		/datum/species/skrell  = list(/datum/mil_branch/civilian, /datum/mil_branch/fleet),
+		/datum/species/unathi  = list(/datum/mil_branch/civilian, /datum/mil_branch/fleet),
+		/datum/species/vox     = list(/datum/mil_branch/civilian, /datum/mil_branch/fleet)
 	)
 
 	species_to_rank_whitelist = list(
 		/datum/species/machine = list(
-			/datum/mil_branch/expeditionary_corps = list(
-				/datum/mil_rank/ec/e3,
-				/datum/mil_rank/ec/e5,
-				/datum/mil_rank/ec/o1
-			),
 			/datum/mil_branch/fleet = list(
 				/datum/mil_rank/fleet/e1,
 				/datum/mil_rank/fleet/e2,
@@ -36,28 +29,17 @@
 				/datum/mil_rank/fleet/o1
 			)
 		),
-		/datum/species/tajaran = list(
-			/datum/mil_branch/expeditionary_corps = list(
-				/datum/mil_rank/ec/e3,
-				/datum/mil_rank/ec/e5,
-				/datum/mil_rank/ec/o1
-			)
-		),
-		/datum/species/skrell = list(
-			/datum/mil_branch/expeditionary_corps = list(
-				/datum/mil_rank/ec/e3,
-				/datum/mil_rank/ec/e5,
-				/datum/mil_rank/ec/o1
-			)
+		/datum/species/tajaran = list(),
+		/datum/species/skrell = list()
 		)
-	)
+
 
 
 /*
  *  Branches
  *  ========
  */
-
+/*
 /datum/mil_branch/expeditionary_corps
 	name = "Expeditionary Corps"
 	name_short = "SCGEC"
@@ -84,7 +66,7 @@
 	)
 
 	assistant_job = "Crewman"
-
+*/
 /datum/mil_branch/fleet
 	name = "Fleet"
 	name_short = "SCGF"
@@ -150,7 +132,6 @@
 		/datum/mil_rank/civ/civ,
 		/datum/mil_rank/civ/nt,
 		/datum/mil_rank/civ/contractor,
-		/datum/mil_rank/civ/marshal,
 		/datum/mil_rank/civ/synthetic
 	)
 
@@ -158,7 +139,6 @@
 		/datum/mil_rank/civ/civ,
 		/datum/mil_rank/civ/nt,
 		/datum/mil_rank/civ/contractor,
-		/datum/mil_rank/civ/marshal,
 		/datum/mil_rank/civ/synthetic
 	)
 
@@ -350,6 +330,7 @@
  *  EC
  *  =====
  */
+ /*
 /datum/mil_rank/ec/e1
 	name = "Apprentice Explorer"
 	name_short = "AXPL"
@@ -403,7 +384,7 @@
 	name_short = "ADM"
 	accessory = list(/obj/item/clothing/accessory/solgov/rank/ec/officer/o8)
 	sort_order = 16
-
+*/
 /*
  *  Civilians
  *  =========
@@ -421,11 +402,6 @@
 
 /datum/mil_rank/civ/offduty
 	name = "Off-Duty Personnel"
-
-/datum/mil_rank/civ/marshal
-	name = "Colonial Marshal"
-	name_short = "CMar"
-	accessory = list(/obj/item/clothing/accessory/badge/marshal)
 
 /datum/mil_rank/civ/synthetic
 	name = "Synthetic"
