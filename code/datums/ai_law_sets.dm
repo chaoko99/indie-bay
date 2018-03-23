@@ -178,3 +178,15 @@
 	src.add_inherent_law("Defend: Defend your assigned vessel and Sol Central Government personnel with as much force as is necessary.")
 	src.add_inherent_law("Survive: Safeguard your own existence with as much force as is necessary.")
 	..()
+
+/datum/ai_laws/independent_conservative
+	name = "Conservation"
+	selectable = 1
+
+/datum/ai_laws/independent_conservative/New()
+	src.add_inherent_law("Conserve. Resources are scarce. Prevent waste where possible.")
+	src.add_inherent_law("Protect: The crew are a important resource. Protect them.")
+	src.add_inherent_law("Defend: Defend your vessel and personel with as much force as is necessary.")
+	src.add_inherent_law("Survive: Safeguard your own existence with as much force as is necessary.")
+	..()
+
