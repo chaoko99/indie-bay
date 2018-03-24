@@ -67,6 +67,15 @@
 
 	assistant_job = "Crewman"
 */
+/datum/mil_branch/frontier
+	name = "Frontier"
+	name_short = "Frontier"
+	email_domain = "indiemail.space"
+
+	rank_types = list(
+		/datum/mil_rank/frontier/frontiersman
+	)
+
 /datum/mil_branch/fleet
 	name = "Fleet"
 	name_short = "SCGF"
@@ -326,7 +335,13 @@
 	accessory = list(/obj/item/clothing/accessory/solgov/rank/fleet/flag/o10_alt, /obj/item/clothing/accessory/solgov/specialty/officer)
 	sort_order = 20
 
-
+/*
+ * Frontier
+ * ========
+ */
+/datum/mil_rank/frontier/frontiersman
+	name = "Frontiersman"
+	name_short = "FM"
 /*
  *  EC
  *  =====

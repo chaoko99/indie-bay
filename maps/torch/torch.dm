@@ -12,6 +12,8 @@
 	#include "torch_antagonism.dm"
 	#include "torch_npcs.dm"
 	#include "torch_security_state.dm"
+	#include "structures/torn_flag.dm"
+	#include "structures/shield_generator.dm"
 
 	#include "datums/uniforms.dm"
 	#include "datums/uniforms_expedition.dm"
