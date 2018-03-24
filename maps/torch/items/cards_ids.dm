@@ -111,10 +111,6 @@
 /obj/item/weapon/card/id/torch/contractor/service/bartender
 	job_access_type = /datum/job/bartender
 
-
-/obj/item/weapon/card/id/torch/crew/representative
-	job_access_type = /datum/job/representative
-
 /obj/item/weapon/card/id/torch/crew/sea
 	job_access_type = /datum/job/sea
 
@@ -161,10 +157,6 @@
 
 /obj/item/weapon/card/id/torch/passenger/research/guard
 	job_access_type = /datum/job/guard
-
-/obj/item/weapon/card/id/torch/passenger/research/liaison
-	job_access_type = /datum/job/liaison
-
 
 //Merchant
 /obj/item/weapon/card/id/torch/merchant
