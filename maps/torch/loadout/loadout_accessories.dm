@@ -98,7 +98,7 @@
 	allowed_roles = list(/datum/job/rd, /datum/job/scientist, /datum/job/scientist_assistant, /datum/job/assistant)
 
 /datum/gear/accessory/armband_nt
-	allowed_roles = list(/datum/job/rd, /datum/job/liaison, /datum/job/senior_scientist, /datum/job/nt_pilot, /datum/job/scientist,
+	allowed_roles = list(/datum/job/rd, , /datum/job/senior_scientist, /datum/job/nt_pilot, /datum/job/scientist,
 						/datum/job/mining, /datum/job/guard, /datum/job/scientist_assistant,
 						/datum/job/roboticist,
 						/datum/job/psychiatrist,  /datum/job/chemist,
