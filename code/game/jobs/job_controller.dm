@@ -474,8 +474,9 @@ var/global/datum/controller/occupations/job_master
 		if(H.char_branch.name == "Civilian")
 			to_chat(H, "<span class='notice'><b>As a civilian, the core worlds have gone silent. It’s just you and your crew out here. Keep them alive. Keep the ship running. It’s all we know we have left.</b></span>")
 		if(H.char_branch.name == "Fleet")
-			to_chat(H, "<span class='notice'><b>As a member of the fleet, your final orders from the admiralty were to: preserve sentient life, uphold the morals of your government, and carry on the discipline and traditions of the Fleet.</b></span>")
-
+			to_chat(H, "<span class='notice'><b>As a member of the Fleet, your final orders from the Admiralty still haunt you: Core worlds unstable. Omega class transit threat. All frontier patrol units are to initiate Safeguard protocols. Preserve sentient species. Preserve our morals. Carry the torch. God’s speed, men.</b></span>")
+		if(H.char_branch.name == "Frontier")
+			to_chat(H, "<span class='notice'><b>As a frontiersman, the core worlds may have gone dark, but it’s business as usual out here. Keep this old rustbucket running and see if these government types and the soft citizens can handle what the rim has to offer.</b></span>")
 
 		// EMAIL GENERATION
 		var/domain
