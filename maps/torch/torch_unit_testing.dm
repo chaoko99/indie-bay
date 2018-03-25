@@ -1,7 +1,6 @@
 /datum/map/torch
 	// Unit test exemptions
 	apc_test_exempt_areas = list(
-		/area/engineering/atmos/storage = NO_SCRUBBER|NO_VENT,
 		/area/engineering/auxpower = NO_SCRUBBER|NO_VENT,
 		/area/engineering/drone_fabrication = NO_SCRUBBER|NO_VENT,
 		/area/engineering/engine_smes = NO_SCRUBBER|NO_VENT,
@@ -26,7 +25,11 @@
 		/area/ninja_dojo = NO_SCRUBBER |NO_VENT | NO_APC,
 		/area/outpost/abandoned = NO_SCRUBBER,
 		/area/rescue_base = NO_SCRUBBER|NO_VENT|NO_APC,
-		/area/shield = NO_SCRUBBER|NO_VENT,
+		/area/shield/bridge = NO_SCRUBBER|NO_VENT,
+		/area/shield/fourthdeck = NO_SCRUBBER|NO_VENT,
+		/area/shield/thirddeck = NO_SCRUBBER|NO_VENT,
+		/area/shield/firstdeck = NO_SCRUBBER|NO_VENT,
+		/area/shield/seconddeck = 0,
 		/area/shuttle = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/shuttle/merchant = NO_SCRUBBER|NO_APC,
 		/area/shuttle/petrov = 0,
