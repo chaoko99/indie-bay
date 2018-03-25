@@ -8,6 +8,12 @@
 	var/linked = 0
 	var/list/things_in_range = list()
 	var/list/glowies_in_range = list()
+	var/on_time = null
+	var/active_state = 0
+	var/on_time_set = 0
+	var/startup_time = null
+	var/stable_time = null
+	var/shut_down_time = null
 
 /obj/machinery/power/shield_generator/big/update_icon()
 	if(running)
@@ -35,11 +41,13 @@
 /obj/structure/shield_generator_blocker
 	density = 1
 	icon = null
+	anchored = 1
 
 /obj/structure/shield_glowy
 	name = null
-	light_range = 8
-	light_power = 8
+	layer = 5000
+	light_range = 0
+	light_power = 0
 	light_color = "#19e5c3"
 	icon = 'maps/torch/icons/obj/shieldglowy.dmi'
 	icon_state = null
@@ -58,16 +66,59 @@
 			src.glowy = G
 			G.linked = 1
 			src.linked = 1
-			set_light(8,8)
-			G.icon_state = "activated"
-			G.light_color = "#0cf2cf"
-			G.layer = EFFECTS_LAYER
+	return
+
+/obj/machinery/power/shield_generator/big/proc/glow_adjust()
+	var/obj/structure/shield_glowy/G
+	for(G in glowies_in_range)
+		if(linked && G.id == src.id)
+			if(running == SHIELD_RUNNING)
+				if(world.time >= stable_time)
+					G.icon_state = "activated"
+					G.set_light(12,12)
+					active_state = 3
+				else if(world.time >= startup_time)
+					G.icon_state = "activating"
+					G.set_light(8,8)
+					active_state = 2
+				else if(world.time >= on_time)
+					G.icon_state = "startup"
+					G.set_light(4,4)
+					active_state = 1
+				else
+					G.icon_state = "null"
+					G.set_light(0,0)
+			if(running == SHIELD_DISCHARGING)
+				G.icon_state = "idle"
+				G.set_light(8,8)
+				active_state = 2
+			if(running == SHIELD_OFF)
+				G.icon_state = "null"
+				G.set_light(0,0)
+				active_state = 0
+	return
+
+/obj/machinery/power/shield_generator/big/proc/start_set()
+	if(linked && running == SHIELD_RUNNING)
+		if(on_time_set)
+			return
+		on_time = world.time
+		startup_time = world.time + 2 MINUTES
+		stable_time = world.time + 12 MINUTES
+		on_time_set = 1
+	else if(running == SHIELD_OFF)
+		on_time = 0
+		startup_time = 0
+		stable_time = 0
+		on_time_set = 0
 	return
 
 /obj/machinery/power/shield_generator/big/Process()
 	upkeep_power_usage = 0
 	power_usage = 0
 	glow_add()
+	start_set()
+	glow_adjust()
 	if(offline_for)
 		offline_for = max(0, offline_for - 1)
 	// We're turned off.
