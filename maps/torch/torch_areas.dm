@@ -188,11 +188,6 @@
 /area/maintenance/substation/seconddeck
 	name = "Second Deck Substation"
 
-/area/crew_quarters/safe_room/seconddeck
-	name = "\improper Second Deck Safe Room"
-	area_flags = AREA_FLAG_RAD_SHIELDED
-
-
 //First Deck (Z-4)
 /area/maintenance/firstdeck
 	name = "First Deck Maintenance"
@@ -1154,11 +1149,6 @@
 	sound_env = SPACE
 
 // Engineering
-
-/area/engineering/atmos/storage
-	name = "\improper Atmospherics Storage"
-	icon_state = "atmos_storage"
-	sound_env = SMALL_ENCLOSED
 
 /area/engineering/engine_room
 	name = "\improper Engine Room"
