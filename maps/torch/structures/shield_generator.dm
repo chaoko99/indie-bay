@@ -3,17 +3,28 @@
 	name = "high powered shield generator"
 	icon = 'maps/torch/icons/obj/bsg.dmi'
 	icon_state = "bsg_off"
-	var/id = null
-	var/glowy = null
-	var/linked = 0
+	var/id = null //Who are we?
+	var/glowy = null //The thing that glows.
+	var/linked = 0 //Are we linked to our thing that glows?
 	var/list/things_in_range = list()
 	var/list/glowies_in_range = list()
-	var/on_time = null
-	var/active_state = 0
-	var/on_time_set = 0
+	var/on_time = null //When did we turn on?
+	var/active_state = 0 //What state are we in?
+	var/on_time_set = 0 //Are we on?
 	var/startup_time = null
 	var/stable_time = null
 	var/shut_down_time = null
+	//Status messages.
+	var/discharge_message = "Discharging primary capacitor and shutting down."
+	var/quarter_message = "Warning! Shield integrity at one quarter capacity or lower! Shield cohesion failing."
+	var/half_message = "Alert. Shield charge at half capacity or lower."
+	var/seventyfive_message = "Alert. Shield charge at seventy five percent capacity or higher."
+	var/full_message = "Notice. Shield charge at maximum."
+	var/next_warn_time = 0
+	var/last_warned = 0
+	var/safe_warned = 1
+	var/online
+
 
 /obj/machinery/power/shield_generator/big/update_icon()
 	if(running)
@@ -27,7 +38,7 @@
 	component_parts += new /obj/item/weapon/circuitboard/shield_generator(src)
 	component_parts += new /obj/item/weapon/stock_parts/capacitor(src)			// Capacitor. Improves shield mitigation when better part is used.
 	component_parts += new /obj/item/weapon/stock_parts/micro_laser(src)
-	component_parts += new /obj/item/weapon/smes_coil(src)						// SMES coil. Improves maximal shield energy capacity.
+	component_parts += new /obj/item/weapon/smes_coil/super_capacity(src)						// SMES coil. Improves maximal shield energy capacity.
 	component_parts += new /obj/item/weapon/stock_parts/console_screen(src)
 	RefreshParts()
 	connect_to_network()
@@ -73,15 +84,15 @@
 	for(G in glowies_in_range)
 		if(linked && G.id == src.id)
 			if(running == SHIELD_RUNNING)
-				if(world.time >= stable_time)
+				if(current_energy >= max_energy * 0.90)
 					G.icon_state = "activated"
 					G.set_light(12,12)
 					active_state = 3
-				else if(world.time >= startup_time)
+				else if(current_energy >= max_energy * 0.15)
 					G.icon_state = "activating"
 					G.set_light(8,8)
 					active_state = 2
-				else if(world.time >= on_time)
+				else if(current_energy >= max_energy * 0.05)
 					G.icon_state = "startup"
 					G.set_light(4,4)
 					active_state = 1
@@ -98,26 +109,10 @@
 				active_state = 0
 	return
 
-/obj/machinery/power/shield_generator/big/proc/start_set()
-	if(linked && running == SHIELD_RUNNING)
-		if(on_time_set)
-			return
-		on_time = world.time
-		startup_time = world.time + 2 MINUTES
-		stable_time = world.time + 12 MINUTES
-		on_time_set = 1
-	else if(running == SHIELD_OFF)
-		on_time = 0
-		startup_time = 0
-		stable_time = 0
-		on_time_set = 0
-	return
-
 /obj/machinery/power/shield_generator/big/Process()
 	upkeep_power_usage = 0
 	power_usage = 0
 	glow_add()
-	start_set()
 	glow_adjust()
 	if(offline_for)
 		offline_for = max(0, offline_for - 1)

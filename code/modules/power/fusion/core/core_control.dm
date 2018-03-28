@@ -48,6 +48,9 @@
 			Device ident '[cur_viewed_device.id_tag]' <span style='color: [cur_viewed_device.owned_field ? "green" : "red"]'>[cur_viewed_device.owned_field ? "active" : "inactive"].</span><br>
 			<b>Power status:</b> [cur_viewed_device.avail()]/[cur_viewed_device.active_power_usage] W<br>
 			<hr>
+			<b>Heat status:</b> [cur_viewed_device.heat_status]<br>
+			<b>Core heat:</b> [cur_viewed_device.heat] K
+			<hr>
 			<a href='?src=\ref[src];toggle_active=1'>Bring field [cur_viewed_device.owned_field ? "offline" : "online"].</a><br>
 			<hr>
 			<b>Field power density (W.m<sup>-3</sup>):</b><br>
@@ -59,8 +62,13 @@
 			<a href='?src=\ref[src];str=1'>+   </a>
 			<a href='?src=\ref[src];str=10'>++  </a>
 			<a href='?src=\ref[src];str=100'>+++ </a>
-			<a href='?src=\ref[src];str=1000'>++++</a><hr>
+			<a href='?src=\ref[src];str=1000'>++++</a>
+			<hr>
+			<b>Plasma release temperature:</b>
+			<a href='?src=\ref[src];heatrelease=0'>[cur_viewed_device.heat_release]C</a>
+			<hr>
 		"}
+
 
 		if(cur_viewed_device.owned_field)
 			dat += {"
@@ -163,6 +171,11 @@
 			cur_viewed_device.set_strength(input("Enter the new field power density (W.m^-3)", "Fusion Control", cur_viewed_device.field_strength) as num)
 		else
 			cur_viewed_device.set_strength(cur_viewed_device.field_strength + val)
+		updateUsrDialog()
+		return 1
+
+	if(href_list["heatrelease"])
+		cur_viewed_device.set_heat(input("Enter the new desired plasma release temperature", "Fusion Control", cur_viewed_device.heat_release) as num)
 		updateUsrDialog()
 		return 1
 

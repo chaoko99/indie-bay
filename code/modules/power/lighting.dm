@@ -176,6 +176,15 @@
 	desc = "A more robust socket for light tubes that demand more power."
 	light_type = /obj/item/weapon/light/tube/large
 
+/obj/machinery/light/orange
+	name = "sodium lamp"
+	desc = "A more robust socket for light tubes that demand more power."
+	light_type = /obj/item/weapon/light/tube/orange
+
+/obj/machinery/light/small/orange
+	name = "small sodium lamp"
+	light_type = /obj/item/weapon/light/bulb/orange
+
 // create a new lighting fixture
 /obj/machinery/light/New(atom/newloc, obj/machinery/light_construct/construct = null)
 	..(newloc)
@@ -553,6 +562,14 @@
 		LIGHTMODE_EMERGENCY = list(l_range = 4, l_power = 1, l_color = "#da0205"),
 		)
 	sound_on = 'sound/machines/lightson.ogg'
+
+/obj/item/weapon/light/tube/orange
+	name = "sodium light tube"
+	brightness_color = "#fc620a"
+
+/obj/item/weapon/light/bulb/orange
+	name = "sodium light bulb"
+	brightness_color = "#fc620a"
 
 /obj/item/weapon/light/tube/large
 	w_class = ITEM_SIZE_SMALL
