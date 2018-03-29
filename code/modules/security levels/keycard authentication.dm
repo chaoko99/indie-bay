@@ -192,8 +192,8 @@ var/global/maint_all_access = 0
 		return 1
 	return ..(M)
 
-/proc/distress_call()
-	playsound(world, 'sound/machines/signal.ogg', 200, 200)
+/obj/machinery/keycard_auth/proc/distress_call()
+	playsound(src, 'sound/machines/signal.ogg', 200, 200)
 	spawn(3000)
 		if(prob(25))
 			command_announcement.Announce("Distress beacon recieved. Vessel approaching.", "Distress Beacon")
