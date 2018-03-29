@@ -232,6 +232,16 @@ obj/machinery/atmospherics/pipe/zpipe/up/red
 obj/machinery/atmospherics/pipe/zpipe/down/red
 	color = PIPE_COLOR_RED
 
+obj/machinery/atmospherics/pipe/zpipe/up/green
+	color = PIPE_COLOR_GREEN
+obj/machinery/atmospherics/pipe/zpipe/down/green
+	color = PIPE_COLOR_GREEN
+
+obj/machinery/atmospherics/pipe/zpipe/up/yellow
+	color = PIPE_COLOR_YELLOW
+obj/machinery/atmospherics/pipe/zpipe/down/yellow
+	color = PIPE_COLOR_YELLOW
+
 obj/machinery/atmospherics/pipe/zpipe/up/fuel
 	name = "upwards fuel pipe"
 	color = PIPE_COLOR_ORANGE

@@ -6,6 +6,8 @@ var/list/fusion_cores = list()
 
 #define MAX_FIELD_STR 10000
 #define MIN_FIELD_STR 1
+#define MAX_HEAT_RELEASE 12000
+#define MIN_HEAT_RELEASE 100
 
 /obj/machinery/power/fusion_core
 	name = "\improper R-UST Mk. 8 Tokamak core"
@@ -23,6 +25,12 @@ var/list/fusion_cores = list()
 	var/obj/effect/fusion_em_field/owned_field
 	var/field_strength = 1//0.01
 	var/id_tag
+	var/heat_release = 2000 //C.
+	var/heat = 0
+	var/heat_status = "Unavaliable."
+	var/heat_status_message_good = "<span style='color: green'>Good</span>"
+	var/heat_status_message_caution = "<span style='color: orange'>Caution</span>"
+	var/heat_status_message_warning = "<span style='color: red'>Warning!</span>"
 
 /obj/machinery/power/fusion_core/mapped
 	anchored = 1
@@ -43,6 +51,7 @@ var/list/fusion_cores = list()
 /obj/machinery/power/fusion_core/Process()
 	if((stat & BROKEN) || !powernet || !owned_field)
 		Shutdown()
+	HeatUpdate()
 
 /obj/machinery/power/fusion_core/Topic(href, href_list)
 	if(..())
@@ -74,6 +83,17 @@ var/list/fusion_cores = list()
 		owned_field = null
 	use_power = 1
 
+/obj/machinery/power/fusion_core/proc/HeatUpdate()
+	var/datum/gas_mixture/environment = src.loc.return_air()
+	if(environment)
+		heat = environment.temperature
+	if(heat >= 12000)
+		heat_status = heat_status_message_warning
+	else if (heat >= 8000)
+		heat_status = heat_status_message_caution
+	else
+		heat_status = heat_status_message_good
+
 /obj/machinery/power/fusion_core/proc/AddParticles(var/name, var/quantity = 1)
 	if(owned_field)
 		owned_field.AddParticles(name, quantity)
@@ -89,6 +109,14 @@ var/list/fusion_cores = list()
 	active_power_usage = 5 * value
 	if(owned_field)
 		owned_field.ChangeFieldStrength(value)
+
+/obj/machinery/power/fusion_core/proc/set_heat(var/value)
+	value = Clamp(value, MIN_HEAT_RELEASE, MAX_HEAT_RELEASE)
+	heat_release = value
+	if(owned_field)
+		owned_field.ChangeHeatRelease(value)
+
+
 
 /obj/machinery/power/fusion_core/attack_hand(var/mob/user)
 	if(!Adjacent(user)) // As funny as it was for the AI to hug-kill the tokamak field from a distance...

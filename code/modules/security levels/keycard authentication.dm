@@ -70,7 +70,7 @@
 		var/decl/security_state/security_state = decls_repository.get_decl(GLOB.using_map.security_state)
 		dat += "<li><A href='?src=\ref[src];triggerevent=Red alert'>Engage [security_state.high_security_level.name]</A></li>"
 		if(!config.ert_admin_call_only)
-			dat += "<li><A href='?src=\ref[src];triggerevent=Emergency Response Team'>Emergency Response Team</A></li>"
+			dat += "<li><A href='?src=\ref[src];triggerevent=Activate Distress Beacon'>Activate Distress Beacon</A></li>"
 
 		dat += "<li><A href='?src=\ref[src];triggerevent=Grant Emergency Maintenance Access'>Grant Emergency Maintenance Access</A></li>"
 		dat += "<li><A href='?src=\ref[src];triggerevent=Revoke Emergency Maintenance Access'>Revoke Emergency Maintenance Access</A></li>"
@@ -157,12 +157,11 @@
 		if("Revoke Emergency Maintenance Access")
 			revoke_maint_all_access()
 			feedback_inc("alert_keycard_auth_maintRevoke",1)
-		if("Emergency Response Team")
+		if("Activate Distress Beacon")
 			if(is_ert_blocked())
-				to_chat(usr, "<span class='warning'>All emergency response teams are dispatched and can not be called at this time.</span>")
+				to_chat(usr, "<span class='warning'>Distress beacon inoperative.</span>")
 				return
-
-			trigger_armed_response_team(1)
+			distress_call()
 			feedback_inc("alert_keycard_auth_ert",1)
 		if("Grant Nuclear Authorization Code")
 			var/obj/machinery/nuclearbomb/nuke = locate(/obj/machinery/nuclearbomb/station) in world
@@ -192,3 +191,12 @@ var/global/maint_all_access = 0
 	if(maint_all_access && src.check_access_list(list(access_maint_tunnels)))
 		return 1
 	return ..(M)
+
+/obj/machinery/keycard_auth/proc/distress_call()
+	playsound(src, 'sound/machines/signal.ogg', 200, 200)
+	spawn(3000)
+		if(prob(25))
+			command_announcement.Announce("Distress beacon recieved. Vessel approaching.", "Distress Beacon")
+			trigger_armed_response_team(1)
+		else
+			command_announcement.Announce("No response detected.", "Distress Beacon")

@@ -19,6 +19,7 @@
 	var/field_strength = 0.01
 	var/tick_instability = 0
 	var/percent_unstable = 0
+	var/heat_release = 2000
 
 	var/obj/machinery/power/fusion_core/owned_core
 	var/list/reactants = list()
@@ -49,7 +50,7 @@
 	owned_core = new_owned_core
 	if(!owned_core)
 		qdel(src)
-
+	heat_release = owned_core.heat_release
 	//create the gimmicky things to handle field collisions
 	var/obj/effect/fusion_particle_catcher/catcher
 
@@ -140,7 +141,7 @@
 		set_light(use_range,use_power)
 		last_range = use_range
 		last_power = use_power
-
+	temp_color()
 	check_instability()
 	Radiate()
 	if(radiation)
@@ -231,6 +232,10 @@
 	field_strength = new_strength
 	change_size(calc_size)
 
+/obj/effect/fusion_em_field/proc/ChangeHeatRelease(var/new_heat)
+	heat_release = owned_core.heat_release
+	heat_release = new_heat
+
 /obj/effect/fusion_em_field/proc/AddEnergy(var/a_energy, var/a_plasma_temperature)
 	energy += a_energy
 	plasma_temperature += a_plasma_temperature
@@ -301,8 +306,8 @@
 
 	if(owned_core && owned_core.loc)
 		var/datum/gas_mixture/environment = owned_core.loc.return_air()
-		if(environment && environment.temperature < (T0C+1000)) // Putting an upper bound on it to stop it being used in a TEG.
-			environment.add_thermal_energy(plasma_temperature*20000)
+		if(environment && environment.temperature < (T0C+heat_release)) // Putting an upper bound on it to stop it being used in a TEG. //Zuh you're stupid.
+			environment.add_thermal_energy(plasma_temperature*2500)
 	radiation = 0
 
 /obj/effect/fusion_em_field/proc/change_size(var/newsize = 1)
@@ -449,6 +454,34 @@
 	AddEnergy(Proj.damage)
 	update_icon()
 	return 0
+
+/obj/effect/fusion_em_field/proc/temp_color()
+	if(plasma_temperature > 60000) //high ultraviolet - magenta
+		light_color = "#cc005f"
+		light_max_range = 25
+		light_max_power = 10
+		set_light(light_max_range,light_max_power)
+	else if(plasma_temperature > 12000) //ultraviolet - blue
+		light_color = "#1b00cc"
+		light_max_range = 20
+		light_max_power = 10
+		set_light(light_max_range,light_max_power)
+	else if(plasma_temperature > 8000) //nearing ultraviolet - cyan
+		light_color = "#00cccc"
+		light_max_range = 15
+		light_max_power = 10
+		set_light(light_max_range,light_max_power)
+	else if(plasma_temperature > 4000) // green
+		light_color = "#1ab705"
+		light_max_range = 10
+		light_max_power = 10
+		set_light(light_max_range,light_max_power)
+	else if(plasma_temperature <= 4000) //orange
+		light_color = "#cc7700"
+		light_max_range = 5
+		light_max_power = 5
+		set_light(light_max_range,light_max_power)
+	return
 
 #undef FUSION_HEAT_CAP
 #undef FUSION_INSTABILITY_DIVISOR
