@@ -53,16 +53,17 @@
 	icon_state = "oldlaser_crappy"
 	item_state = "oldlaser_crappy"
 	produces_heat = 1
-	heat_produced = 25
+	heat_produced = 15
+	charge_cost = 10
 
 /obj/item/weapon/gun/energy/laser/old/overheat_act(mob/user)
-	if(prob(25))
+	if(prob(15))
 		to_chat(usr, "<span class='danger'>\The [src] sizzles in your hands, acrid smoke rising from the firing end!</span>")
 		usr.visible_message("<span class='danger'>\The [src] sizzles in [usr]'s hands, acrid smoke rising from the firing end!</span>")
 		desc += " The optical pathway is melted and useless."
 		projectile_type = null
 		return
-	else if(prob(10))
+	else if(prob(5))
 		to_chat(usr, "<span class='danger'>\The [src] sizzles in your hands, acrid smoke bellowing from the power cell before it explodes violently!</span>")
 		usr.visible_message("<span class='danger'>\The [src] sizzles in [usr]'s hands, acrid smoke bellowing from the power cell before it explodes violently!</span>")
 		explosion(get_turf(src), -1, 0, 2)
