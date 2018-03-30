@@ -1,12 +1,14 @@
 /datum/map/torch
 	branch_types = list(
 		/datum/mil_branch/fleet,
-		/datum/mil_branch/civilian
+		/datum/mil_branch/civilian,
+		/datum/mil_branch/frontier
 	)
 
 	spawn_branch_types = list(
 		/datum/mil_branch/fleet,
-		/datum/mil_branch/civilian
+		/datum/mil_branch/civilian,
+		/datum/mil_branch/frontier
 	)
 
 	species_to_branch_whitelist = list(

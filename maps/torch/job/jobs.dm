@@ -50,14 +50,15 @@
 	minimal_player_age = 21
 	economic_modifier = 15
 	ideal_character_age = 50
-	outfit_type = /decl/hierarchy/outfit/job/torch/crew/command/CO
+	outfit_type = /decl/hierarchy/outfit/job/captain/
 	allowed_branches = list(
-		/datum/mil_branch/civilian,
-		/datum/mil_branch/fleet
+		/datum/mil_branch/,
+		/datum/mil_branch/fleet = /decl/hierarchy/outfit/job/torch/crew/command/CO
 	)
 	allowed_ranks = list(
 		/datum/mil_rank/fleet/o6,
-		/datum/mil_rank/civ
+		/datum/mil_rank/civ,
+		/datum/mil_rank/frontier
 	)
 
 	software_on_spawn = list(/datum/computer_file/program/comm,
@@ -74,14 +75,15 @@
 	ideal_character_age = 45
 	outfit_type = /decl/hierarchy/outfit/job/torch/crew/command/XO
 	allowed_branches = list(
-		/datum/mil_branch/civilian,
+		/datum/mil_branch,
 		/datum/mil_branch/fleet = /decl/hierarchy/outfit/job/torch/crew/command/XO/fleet
 	)
 	alt_titles = list("Bosun")
 	allowed_ranks = list(
 		/datum/mil_rank/fleet/o5,
 		/datum/mil_rank/fleet/o4,
-		/datum/mil_rank/civ
+		/datum/mil_rank/civ,
+		/datum/mil_rank/frontier
 	)
 
 
@@ -138,14 +140,15 @@
 	ideal_character_age = 48
 	outfit_type = /decl/hierarchy/outfit/job/torch/crew/command/cmo
 	allowed_branches = list(
-		/datum/mil_branch/civilian,
+		/datum/mil_branch/,
 		/datum/mil_branch/fleet = /decl/hierarchy/outfit/job/torch/crew/command/cmo/fleet
 	)
 	allowed_ranks = list(
 		/datum/mil_rank/fleet/o4,
 		/datum/mil_rank/fleet/o3,
 		/datum/mil_rank/fleet/o2,
-		/datum/mil_rank/civ
+		/datum/mil_rank/civ,
+		/datum/mil_rank/frontier/frontiersman
 	)
 
 	access = list(access_medical, access_morgue, access_maint_tunnels, access_external_airlocks, access_emergency_storage,
@@ -167,13 +170,14 @@
 	minimal_player_age = 21
 	outfit_type = /decl/hierarchy/outfit/job/torch/crew/command/chief_engineer
 	allowed_branches = list(
-		/datum/mil_branch/civilian,
+		/datum/mil_branch/,
 		/datum/mil_branch/fleet = /decl/hierarchy/outfit/job/torch/crew/command/chief_engineer/fleet
 	)
 	allowed_ranks = list(
 		/datum/mil_rank/civ,
 		/datum/mil_rank/fleet/o3,
-		/datum/mil_rank/fleet/o2
+		/datum/mil_rank/fleet/o2,
+		/datum/mil_rank/frontier/frontiersman
 	)
 
 	access = list(access_engine, access_engine_equip, access_maint_tunnels, access_external_airlocks, access_emergency_storage,
@@ -205,13 +209,14 @@
 	ideal_character_age = 35
 	outfit_type = /decl/hierarchy/outfit/job/torch/crew/command/cos
 	allowed_branches = list(
-		/datum/mil_branch/civilian,
+		/datum/mil_branch/,
 		/datum/mil_branch/fleet = /decl/hierarchy/outfit/job/torch/crew/command/cos/fleet
 	)
 	allowed_ranks = list(
 		/datum/mil_rank/civ,
 		/datum/mil_rank/fleet/o3,
-		/datum/mil_rank/fleet/o2
+		/datum/mil_rank/fleet/o2,
+		/datum/mil_rank/frontier
 	)
 
 	access = list(access_security, access_brig, access_armory, access_forensics_lockers,
@@ -269,12 +274,13 @@
 	ideal_character_age = 24
 	outfit_type = /decl/hierarchy/outfit/job/torch/crew/command/bridgeofficer
 	allowed_branches = list(
-		/datum/mil_branch/civilian,
+		/datum/mil_branch,
 		/datum/mil_branch/fleet = /decl/hierarchy/outfit/job/torch/crew/command/bridgeofficer/fleet
 	)
 	allowed_ranks = list(
 		/datum/mil_rank/civ,
-		/datum/mil_rank/fleet/o1
+		/datum/mil_rank/fleet/o1,
+		/datum/mil_rank/frontier
 	)
 
 
