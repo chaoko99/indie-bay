@@ -194,9 +194,10 @@ var/global/maint_all_access = 0
 
 /obj/machinery/keycard_auth/proc/distress_call()
 	playsound(src, 'sound/machines/signal.ogg', 200, 200)
+	command_announcement.Announce("Distress beacon launched.", "Distress Beacon")
 	spawn(3000)
 		if(prob(25))
-			command_announcement.Announce("Distress beacon recieved. Vessel approaching.", "Distress Beacon")
+			command_announcement.Announce("Bounceback: Distress signal received by third-party. Vessel is approaching the ship.", "Distress Beacon")
 			trigger_armed_response_team(1)
 		else
 			command_announcement.Announce("No response detected.", "Distress Beacon")

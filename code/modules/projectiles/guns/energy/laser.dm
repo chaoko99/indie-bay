@@ -47,6 +47,74 @@
 			desc += " The optical pathway is melted and useless."
 			projectile_type = null
 
+/obj/item/weapon/gun/energy/laser/old
+	name = "old laser carbine"
+	desc = "A Hephaestus Industries G10A carbine, designed to kill with concentrated energy blasts. This older model packs respectable firepower, but has subpar cooling systems."
+	icon_state = "oldlaser_crappy"
+	item_state = "oldlaser_crappy"
+	produces_heat = 1
+	heat_produced = 25
+
+/obj/item/weapon/gun/energy/laser/old/overheat_act(mob/user)
+	if(prob(25))
+		to_chat(usr, "<span class='danger'>\The [src] sizzles in your hands, acrid smoke rising from the firing end!</span>")
+		usr.visible_message("<span class='danger'>\The [src] sizzles in [usr]'s hands, acrid smoke rising from the firing end!</span>")
+		desc += " The optical pathway is melted and useless."
+		projectile_type = null
+		return
+	else if(prob(10))
+		to_chat(usr, "<span class='danger'>\The [src] sizzles in your hands, acrid smoke bellowing from the power cell before it explodes violently!</span>")
+		usr.visible_message("<span class='danger'>\The [src] sizzles in [usr]'s hands, acrid smoke bellowing from the power cell before it explodes violently!</span>")
+		explosion(get_turf(src), -1, 0, 2)
+		qdel(src)
+	to_chat(usr, "<span class='warning'>[src] overheats!</span>")
+	playsound(src.loc, 'sound/weapons/empty.ogg', 100, 1)
+	update_icon()
+	return
+
+/obj/item/weapon/gun/energy/laser/old/Process()
+	if(heat && !overheat)
+		heat -= 5
+	if(heat <= 0)
+		overheat = 0
+		heat = 0
+	if(overheat)
+		heat -= 3
+	update_icon()
+
+/obj/item/weapon/gun/energy/laser/old/proc/get_heat_overlay()
+	if(overheat)
+		return "heat_overlay_crappy_overheat"
+	else if(heat >= max_heat)
+		return "heat_overlay_crappy_100"
+	else if(heat >= max_heat * 0.75)
+		return "heat_overlay_crappy_75"
+	else if(heat >= max_heat * 0.50)
+		return "heat_overlay_crappy_50"
+	else if(heat >= max_heat * 0.25)
+		return "heat_overlay_crappy_25"
+	else
+		return "heat_overlay_crappy_0"
+
+/obj/item/weapon/gun/energy/laser/old/proc/get_power_overlay()
+	if(power_supply.charge >= 200)
+		return "power_oldlaser_100"
+	else if(power_supply.charge >= 160)
+		return "power_oldlaser_75"
+	else if(power_supply.charge >= 100)
+		return "power_oldlaser_50"
+	else if(power_supply.charge >= 40)
+		return "power_oldlaser_25"
+	else if(power_supply.charge == 0)
+		return "power_oldlaser_0"
+
+/obj/item/weapon/gun/energy/laser/old/update_icon()
+	var/list/new_overlays = list()
+
+	new_overlays += get_heat_overlay()
+	new_overlays += get_power_overlay()
+	overlays = new_overlays
+
 obj/item/weapon/gun/energy/retro
 	name = "retro laser"
 	icon_state = "retro"

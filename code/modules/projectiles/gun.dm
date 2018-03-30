@@ -71,6 +71,11 @@
 
 	var/sel_mode = 1 //index of the currently selected mode
 	var/list/firemodes = list()
+	var/heat = 0
+	var/max_heat = 100
+	var/overheat = 0
+	var/produces_heat = 1 //Please only use this for energy weapons!
+	var/heat_produced = 10
 
 	//aiming system stuff
 	var/keep_aim = 1 	//1 for keep shooting until aim is lowered
@@ -88,7 +93,7 @@
 
 	if(isnull(scoped_accuracy))
 		scoped_accuracy = accuracy
-
+	START_PROCESSING(SSobj, src)
 /obj/item/weapon/gun/update_twohanding()
 	if(one_hand_penalty)
 		update_icon() // In case item_state is set somewhere else.
@@ -150,6 +155,9 @@
 
 	if(user && user.a_intent == I_HELP) //regardless of what happens, refuse to shoot if help intent is on
 		to_chat(user, "<span class='warning'>You refrain from firing \the [src] as your intent is set to help.</span>")
+
+	if(overheat)
+		return
 	else
 		Fire(A,user,params) //Otherwise, fire normally.
 
@@ -166,6 +174,8 @@
 	if(target.z != user.z) return
 
 	add_fingerprint(user)
+	if(overheat)
+		return
 
 	if(!special_check(user))
 		return
@@ -174,7 +184,6 @@
 		if (world.time % 3) //to prevent spam
 			to_chat(user, "<span class='warning'>[src] is not ready to fire again!</span>")
 		return
-
 	var/shoot_time = (burst - 1)* burst_delay
 	user.setClickCooldown(shoot_time) //no clicking on things while shooting
 	user.setMoveCooldown(shoot_time) //no moving while shooting either
@@ -210,7 +219,11 @@
 	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 	user.setMoveCooldown(move_delay)
 	next_fire_time = world.time + fire_delay
-
+	if(produces_heat)
+		heat += heat_produced
+	if(heat >= max_heat)
+		overheat = 1
+		overheat_act()
 //obtains the next projectile to fire
 /obj/item/weapon/gun/proc/consume_next_projectile()
 	return null
@@ -444,4 +457,9 @@
 	var/datum/firemode/new_mode = switch_firemodes(user)
 	if(new_mode)
 		to_chat(user, "<span class='notice'>\The [src] is now set to [new_mode.name].</span>")
+
+/obj/item/weapon/gun/proc/overheat_act(mob/user)
+	to_chat(user, "<span class='warning'>[src] overheats!</span>")
+
+
 
