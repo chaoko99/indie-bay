@@ -78,6 +78,10 @@
 		/datum/mil_rank/frontier/frontiersman
 	)
 
+	spawn_rank_types = list(
+		/datum/mil_rank/frontier/frontiersman
+	)
+
 /datum/mil_branch/fleet
 	name = "Fleet"
 	name_short = "SCGF"

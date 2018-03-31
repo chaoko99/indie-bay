@@ -14,7 +14,7 @@
 	allowed_roles = RESTRICTED_ROLES
 
 /datum/gear/suit/security_poncho
-	allowed_roles = list(/datum/job/guard, /datum/job/merchant)
+	allowed_roles = list( , /datum/job/merchant)
 
 /datum/gear/suit/medical_poncho
 	allowed_roles = list( /datum/job/psychiatrist, /datum/job/merchant)
@@ -26,7 +26,7 @@
 	allowed_roles = list(/datum/job/scientist, /datum/job/scientist_assistant, /datum/job/merchant)
 
 /datum/gear/suit/cargo_poncho
-	allowed_roles = list(/datum/job/cargo_contractor, /datum/job/merchant)
+	allowed_roles = list(  /datum/job/merchant)
 
 /datum/gear/suit/suit_jacket
 	allowed_roles = FORMAL_ROLES

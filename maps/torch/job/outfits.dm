@@ -436,7 +436,6 @@ Keeping them simple for now, just spawning with basic EC uniforms, and pretty mu
 	name = OUTFIT_JOB_NAME("Supply Assistant")
 	uniform = /obj/item/clothing/under/rank/cargotech
 	shoes = /obj/item/clothing/shoes/brown
-	id_type = /obj/item/weapon/card/id/torch/contractor/supply
 	pda_type = /obj/item/device/pda/cargo
 
 
@@ -577,8 +576,6 @@ Keeping them simple for now, just spawning with basic EC uniforms, and pretty mu
 	name = OUTFIT_JOB_NAME("Security Guard")
 	uniform = /obj/item/clothing/under/rank/guard
 	shoes = /obj/item/clothing/shoes/jackboots
-	id_type = /obj/item/weapon/card/id/torch/passenger/research/guard
-	pda_type = /obj/item/device/pda/security
 
 /decl/hierarchy/outfit/job/torch/passenger/research/guard/New()
 	..()
