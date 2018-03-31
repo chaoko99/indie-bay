@@ -99,10 +99,10 @@
 
 /datum/gear/accessory/armband_nt
 	allowed_roles = list(/datum/job/rd, , /datum/job/senior_scientist, /datum/job/nt_pilot, /datum/job/scientist,
-						/datum/job/mining, /datum/job/guard, /datum/job/scientist_assistant,
+						/datum/job/mining,  , /datum/job/scientist_assistant,
 						/datum/job/roboticist,
 						/datum/job/psychiatrist,  /datum/job/chemist,
-						/datum/job/cargo_contractor, /datum/job/janitor, /datum/job/chef, /datum/job/bartender)
+						/datum/job/janitor, /datum/job/chef, /datum/job/bartender)
 
 /datum/gear/accessory/ntaward
 	allowed_roles = NANOTRASEN_ROLES
@@ -118,20 +118,20 @@
 
 /datum/gear/storage/brown_vest
 	allowed_roles = list(/datum/job/chief_engineer, /datum/job/senior_engineer, /datum/job/engineer,  /datum/job/roboticist, /datum/job/qm, /datum/job/cargo_tech,
-						/datum/job/cargo_contractor, /datum/job/mining, /datum/job/janitor, /datum/job/scientist_assistant, /datum/job/merchant, /datum/job/nt_pilot)
+						  /datum/job/mining, /datum/job/janitor, /datum/job/scientist_assistant, /datum/job/merchant, /datum/job/nt_pilot)
 
 /datum/gear/storage/black_vest
-	allowed_roles = list(/datum/job/hos, /datum/job/warden, /datum/job/detective, /datum/job/officer, /datum/job/guard, /datum/job/merchant)
+	allowed_roles = list(/datum/job/hos, /datum/job/warden, /datum/job/detective, /datum/job/officer,  , /datum/job/merchant)
 
 /datum/gear/storage/white_vest
 	allowed_roles = list(/datum/job/cmo, /datum/job/senior_doctor, /datum/job/doctor,  /datum/job/merchant)
 
 /datum/gear/storage/brown_drop_pouches
 	allowed_roles = list(/datum/job/chief_engineer, /datum/job/senior_engineer, /datum/job/engineer,  /datum/job/roboticist, /datum/job/qm, /datum/job/cargo_tech,
-						/datum/job/cargo_contractor, /datum/job/mining, /datum/job/janitor, /datum/job/scientist_assistant, /datum/job/merchant)
+						  /datum/job/mining, /datum/job/janitor, /datum/job/scientist_assistant, /datum/job/merchant)
 
 /datum/gear/storage/black_drop_pouches
-	allowed_roles = list(/datum/job/hos, /datum/job/warden, /datum/job/detective, /datum/job/officer, /datum/job/guard, /datum/job/merchant)
+	allowed_roles = list(/datum/job/hos, /datum/job/warden, /datum/job/detective, /datum/job/officer,  , /datum/job/merchant)
 
 /datum/gear/storage/white_drop_pouches
 	allowed_roles = list(/datum/job/cmo, /datum/job/senior_doctor, /datum/job/doctor,  /datum/job/merchant)
@@ -191,6 +191,6 @@
 	allowed_roles = NON_MILITARY_ROLES
 
 /datum/gear/accessory/ftupin
-	allowed_roles = list(/datum/job/scientist, /datum/job/mining, /datum/job/guard, /datum/job/scientist_assistant,
+	allowed_roles = list(/datum/job/scientist, /datum/job/mining,  , /datum/job/scientist_assistant,
 						/datum/job/scientist_assistant,  /datum/job/roboticist,
-						/datum/job/psychiatrist, /datum/job/cargo_contractor, /datum/job/bartender, /datum/job/merchant, /datum/job/assistant)
+						/datum/job/psychiatrist,   /datum/job/bartender, /datum/job/merchant, /datum/job/assistant)

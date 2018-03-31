@@ -48,14 +48,14 @@
 	allowed_roles = STERILE_ROLES
 
 /datum/gear/head/whitentberet
-	allowed_roles = list(/datum/job/guard)
+	allowed_roles = list( )
 
 /datum/gear/head/beret
 	allowed_roles = NON_MILITARY_ROLES
 
 /datum/gear/mask/bandana
 	allowed_roles = NON_MILITARY_ROLES
-	
+
 /datum/gear/head/bandana
 	allowed_roles = NON_MILITARY_ROLES
 

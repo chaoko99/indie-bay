@@ -92,10 +92,6 @@
 /obj/item/weapon/card/id/torch/crew/supply
 	job_access_type = /datum/job/cargo_tech
 
-/obj/item/weapon/card/id/torch/contractor/supply
-	job_access_type = /datum/job/cargo_contractor
-
-
 /obj/item/weapon/card/id/torch/crew/service //unused
 	job_access_type = /datum/job/assistant
 
@@ -154,9 +150,6 @@
 
 /obj/item/weapon/card/id/torch/passenger/research/mining
 	job_access_type = /datum/job/mining
-
-/obj/item/weapon/card/id/torch/passenger/research/guard
-	job_access_type = /datum/job/guard
 
 //Merchant
 /obj/item/weapon/card/id/torch/merchant
