@@ -373,12 +373,6 @@ var/const/NO_EMAG_ACT = -50
 /obj/item/weapon/card/id/science/roboticist
 	job_access_type = /datum/job/roboticist
 
-/obj/item/weapon/card/id/science/head
-	name = "identification card"
-	desc = "A card which represents knowledge and reasoning."
-	icon_state = "sciGold"
-	job_access_type = /datum/job/rd
-
 /obj/item/weapon/card/id/cargo
 	name = "identification card"
 	desc = "A card issued to cargo staff."
