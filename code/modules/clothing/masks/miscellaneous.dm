@@ -259,7 +259,7 @@
 	item_state = "spirit_mask"
 	flags_inv = HIDEFACE
 	body_parts_covered = FACE|EYES
-	
+
 // Bandanas below
 /obj/item/clothing/mask/bandana
 	name = "black bandana"
@@ -307,22 +307,22 @@
 	name = "gold bandana"
 	icon_state = "bandgold"
 	item_state = "bandgold"
-	
+
 /obj/item/clothing/mask/bandana/orange
 	name = "orange bandana"
 	icon_state = "bandorange"
 	item_state = "bandorange"
-	
+
 /obj/item/clothing/mask/bandana/purple
 	name = "purple bandana"
 	icon_state = "bandpurple"
 	item_state = "bandpurple"
-	
+
 /obj/item/clothing/mask/bandana/botany
 	name = "botany bandana"
 	icon_state = "bandbotany"
 	item_state = "bandbotany"
-	
+
 /obj/item/clothing/mask/bandana/camo
 	name = "camo bandana"
 	icon_state = "bandcamo"
@@ -333,4 +333,20 @@
 	desc = "A fine black bandana with nanotech lining and a skull emblem. Can be worn on the head or face."
 	icon_state = "bandskull"
 	item_state = "bandskull"
-	
+
+/obj/item/clothing/mask/surgical/makeshift_mask
+	name = "makeshift mask"
+	desc = "A cloth mask to weakly help prevent the spread of diseases."
+	icon = 'icons/obj/makeshift.dmi'
+	icon_state = "makemask"
+	item_state = "makemask"
+	w_class = ITEM_SIZE_SMALL
+	body_parts_covered = FACE
+	item_flags = ITEM_FLAG_FLEXIBLEMATERIAL
+	gas_transfer_coefficient = 0.90
+	permeability_coefficient = 0.01
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 30, rad = 0)
+	down_gas_transfer_coefficient = 1
+	down_body_parts_covered = null
+	down_icon_state = "steriledown"
+	pull_mask = 1
