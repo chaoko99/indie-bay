@@ -74,7 +74,7 @@
 	var/heat = 0
 	var/max_heat = 100
 	var/overheat = 0
-	var/produces_heat = 1 //Please only use this for energy weapons!
+	var/produces_heat = 0 //Please only use this for energy weapons!
 	var/heat_produced = 10
 
 	//aiming system stuff
