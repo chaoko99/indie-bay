@@ -36,7 +36,7 @@
 		/area/space = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/storage = NO_SCRUBBER|NO_VENT,
 		/area/storage/auxillary/port = 0,
-		/area/storage/auxillary/starboard = 0,
+		/area/storage/auxillary/starboard = NO_APC,
 		/area/storage/primary = 0,
 		/area/storage/tech = 0,
 		/area/storage/tools = 0,
@@ -71,7 +71,8 @@
 		/area/icarus/vessel = NO_APC,
 		/area/icarus/open = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/quartermaster/storage/aux = NO_SCRUBBER|NO_VENT|NO_APC,
-		/area/storage/auxillary/starboard = NO_SCRUBBER|NO_VENT|NO_APC
+		/area/storage/auxillary/starboard = NO_SCRUBBER|NO_VENT|NO_APC,
+		/area/maintenance/disposal = 0
 	)
 
 	area_coherency_test_exempt_areas = list(
@@ -145,10 +146,6 @@
 /datum/unit_test/zas_area_test/ai_chamber
 	name = "ZAS: AI Chamber"
 	area_path = /area/turret_protected/ai
-
-/datum/unit_test/zas_area_test/cargo_bay
-	name = "ZAS: Cargo Bay"
-	area_path = /area/quartermaster/storage
 
 datum/unit_test/zas_area_test/supply_centcomm
 	name = "ZAS: Supply Shuttle (CentComm)"
