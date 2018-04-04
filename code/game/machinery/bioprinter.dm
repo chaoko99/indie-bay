@@ -11,28 +11,20 @@
 	density = 1
 	use_power = 1
 	idle_power_usage = 40
-	active_power_usage = 300
+	active_power_usage = 900
 
 	var/stored_matter = 0
 	var/max_stored_matter = 0
-	var/print_delay = 100
+	var/print_delay = 1000
 	var/printing
 
 	// These should be subtypes of /obj/item/organ
 	var/list/products = list(
-		BP_HEART   = list(/obj/item/organ/internal/heart,  25),
-		BP_LUNGS   = list(/obj/item/organ/internal/lungs,  25),
-		BP_KIDNEYS = list(/obj/item/organ/internal/kidneys,20),
-		BP_EYES    = list(/obj/item/organ/internal/eyes,   20),
-		BP_LIVER   = list(/obj/item/organ/internal/liver,  25),
-		BP_L_ARM   = list(/obj/item/organ/external/arm,  65),	
-		BP_R_ARM   = list(/obj/item/organ/external/arm/right,  65),	
-		BP_L_LEG   = list(/obj/item/organ/external/leg,  65),	
-		BP_R_LEG   = list(/obj/item/organ/external/leg/right,  65),	
-		BP_L_FOOT   = list(/obj/item/organ/external/foot,  40),	
-		BP_R_FOOT   = list(/obj/item/organ/external/foot/right,  40),	
-		BP_L_HAND   = list(/obj/item/organ/external/hand,  40),	
-		BP_R_HAND   = list(/obj/item/organ/external/hand/right,  40)
+		BP_HEART   = list(/obj/item/organ/internal/heart,  75),
+		BP_LUNGS   = list(/obj/item/organ/internal/lungs,  75),
+		BP_KIDNEYS = list(/obj/item/organ/internal/kidneys,60),
+		BP_EYES    = list(/obj/item/organ/internal/eyes,   60),
+		BP_LIVER   = list(/obj/item/organ/internal/liver,  75),
 		)
 
 /obj/machinery/organ_printer/attackby(var/obj/item/O, var/mob/user)
