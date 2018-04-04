@@ -60,6 +60,7 @@
 
 			if(tmp_cell < rare_val)      // Surface metals.
 				T.resources["iron"] =     rand(RESOURCE_HIGH_MIN, RESOURCE_HIGH_MAX)
+				T.resources["salt"] =     rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
 				T.resources["gold"] =     rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
 				T.resources["silver"] =   rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
 				T.resources["uranium"] =  rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
@@ -76,12 +77,14 @@
 				T.resources["hydrogen"] = 0
 				T.resources["diamond"] =  0
 				T.resources["iron"] =     0
+				T.resources["salt"] =     0
 			else                             // Deep metals.
 				T.resources["uranium"] =  rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
 				T.resources["diamond"] =  rand(RESOURCE_LOW_MIN,  RESOURCE_LOW_MAX)
 				T.resources["phoron"] =   rand(RESOURCE_HIGH_MIN, RESOURCE_HIGH_MAX)
 				T.resources["osmium"] =   rand(RESOURCE_HIGH_MIN, RESOURCE_HIGH_MAX)
 				T.resources["hydrogen"] = rand(RESOURCE_MID_MIN,  RESOURCE_MID_MAX)
+				T.resources["salt"] =     0
 				T.resources["iron"] =     0
 				T.resources["gold"] =     0
 				T.resources["silver"] =   0
