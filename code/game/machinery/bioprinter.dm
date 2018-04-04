@@ -24,7 +24,7 @@
 		BP_LUNGS   = list(/obj/item/organ/internal/lungs,  75),
 		BP_KIDNEYS = list(/obj/item/organ/internal/kidneys,60),
 		BP_EYES    = list(/obj/item/organ/internal/eyes,   60),
-		BP_LIVER   = list(/obj/item/organ/internal/liver,  75),
+		BP_LIVER   = list(/obj/item/organ/internal/liver,  75)
 		)
 
 /obj/machinery/organ_printer/attackby(var/obj/item/O, var/mob/user)
