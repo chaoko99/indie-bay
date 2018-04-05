@@ -41,17 +41,6 @@
 
 //Pods
 
-/datum/shuttle/autodock/ferry/escape_pod/torchpod/escape_pod6
-	warmup_time = 10
-	shuttle_area = /area/shuttle/escape_pod6/station
-	number = 6
-/obj/effect/shuttle_landmark/escape_pod/start/pod6
-	number = 6
-/obj/effect/shuttle_landmark/escape_pod/out/pod6
-	number = 6
-/obj/effect/shuttle_landmark/escape_pod/transit/pod6
-	number = 6
-
 /datum/shuttle/autodock/ferry/escape_pod/torchpod/escape_pod7
 	warmup_time = 10
 	shuttle_area = /area/shuttle/escape_pod7/station
@@ -73,17 +62,6 @@
 	number = 8
 /obj/effect/shuttle_landmark/escape_pod/transit/pod8
 	number = 8
-
-/datum/shuttle/autodock/ferry/escape_pod/torchpod/escape_pod9
-	warmup_time = 10
-	shuttle_area = /area/shuttle/escape_pod9/station
-	number = 9
-/obj/effect/shuttle_landmark/escape_pod/start/pod9
-	number = 9
-/obj/effect/shuttle_landmark/escape_pod/out/pod9
-	number = 9
-/obj/effect/shuttle_landmark/escape_pod/transit/pod9
-	number = 9
 
 /datum/shuttle/autodock/ferry/escape_pod/torchpod/escape_pod10
 	warmup_time = 10
@@ -176,25 +154,6 @@
 	number = 17
 /obj/effect/shuttle_landmark/escape_pod/transit/pod17
 	number = 17
-
-//Petrov
-
-/datum/shuttle/autodock/ferry/petrov
-	name = "Petrov"
-	warmup_time = 10
-	shuttle_area = list(/area/shuttle/petrov/ship,/area/shuttle/petrov/cell1,/area/shuttle/petrov/cell2,/area/shuttle/petrov/cell3)
-	dock_target = "petrov_shuttle_airlock"
-	waypoint_station = "nav_petrov_start"
-	waypoint_offsite = "nav_petrov_out"
-
-/obj/effect/shuttle_landmark/petrov/start
-	name = "First Deck"
-	landmark_tag = "nav_petrov_start"
-	docking_controller = "petrov_shuttle_dock_airlock"
-
-/obj/effect/shuttle_landmark/petrov/out
-	name = "Space near the ship"
-	landmark_tag = "nav_petrov_out"
 
 //Ninja Shuttle.
 /datum/shuttle/autodock/multi/antag/ninja
