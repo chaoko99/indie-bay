@@ -69,6 +69,31 @@
 	#undef LTR
 	#undef NUM
 	#undef NAME
+
+/datum/species/human/podgrown
+	name = "Podmorph Human"
+	name_plural = "Podmorph Humans"
+	blurb = "With cloning on the forefront of human scientific advancement, cheap mass production \
+	of bodies is a very real and rather ethically grey industry. Podmorphs are designed for those who can't accept vatgrowns. \
+	Horrifying amalgams of flesh and machine, these artifical humans exist as a cheap substitue for actual vatgrown bodies.\
+	Their bodies are frail, and their flesh weak. These amalgams are often used on the Rim, where cloning is often unavaliable.\
+	and lace technology common."
+	icobase = 'icons/mob/human_races/subspecies/r_podmorph.dmi'
+
+	toxins_mod = 0.90
+	brute_mod = 1.25
+	burn_mod =  1.4
+
+	has_organ = list(
+		BP_HEART =    /obj/item/organ/internal/heart/pod,
+		BP_LUNGS =    /obj/item/organ/internal/lungs/pod,
+		BP_LIVER =    /obj/item/organ/internal/liver/pod,
+		BP_KIDNEYS =  /obj/item/organ/internal/kidneys/pod,
+		BP_BRAIN =    /obj/item/organ/internal/brain/pod,
+		BP_EYES =     /obj/item/organ/internal/eyes/pod
+		)
+	appearance_flags = HAS_HAIR_COLOR | HAS_SKIN_TONE_SPCR | HAS_LIPS | HAS_UNDERWEAR | HAS_EYE_COLOR
+
 /*
 // These guys are going to need full resprites of all the suits/etc so I'm going to
 // define them and commit the sprites, but leave the clothing for another day.
