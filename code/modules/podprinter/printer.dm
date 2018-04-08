@@ -5,6 +5,13 @@
 	icon_state = "on_empty"
 	idle_power_usage = 1000 //Keeping the controllers running, running stasis for the biomass, etc.
 	active_power_usage = 80000 //Running the actual printer.
+	density = 1
+	anchored = 1
+	var/print_start = 0
+	var/print_time_set = 0
+	var/next_state_time = 0
+	var/pod_id = "Alpha"
+	var/next_sound = null
 	var/printing_gender = null
 	var/printing_name = null
 	var/can_print = 1 //Can we print?
@@ -12,10 +19,10 @@
 	var/metal = 0
 	var/biomass = 0
 	var/max_metal = 0 //How much metal can we hold
-	var/max_biomass = 0 //How much biomas can we hold
-	var/cooldown = 5000 //5 minutes.
+	var/max_biomass = 0 //How much biomass can we hold
 	var/list/choices = list("Yes", "No")
 	var/list/gender_choices = list("male", "female")
+	var/list/running_sounds = list("hisses and hums.", "whirrs and beeps", "clicks and thumps", "thrums and vibrates")
 	var/required_materials = 15000 //at max capacity, print four pods
 	var/list/amount_list_biomass = list(
 		/obj/item/weapon/reagent_containers/food/snacks/meat = 500,
@@ -39,15 +46,24 @@
 		if(istype(O, path))
 			if((max_biomass - biomass) < amount_list_biomass[path])
 				to_chat(user, "<span class='warning'>\The [src] is too full.</span>")
+				playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, 1)
+				icon_state = "on_error"
+				spawn(50)
+					update_icon()
 				return
 			biomass += amount_list_biomass[path]
 			to_chat(user, "<span class='info'>\The [src] processes \the [O]. Levels of stored biomass now: [biomass]</span>")
+			playsound(src.loc, 'sound/machines/ping.ogg', 50, 1)
 			qdel(O)
 			return
 	for(var/path in amount_list_metal)
 		if(istype(O, path))
 			if((max_metal-metal) < amount_list_metal[path])
 				to_chat(user, "<span class='warning'>\The [src] is too full.</span>")
+				playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, 1)
+				icon_state = "on_error"
+				spawn(50)
+					update_icon()
 				return
 			var/obj/item/stack/S = O
 			var/space_left = max_metal - metal
@@ -57,6 +73,7 @@
 				return
 			metal = min(max_metal, metal + (sheets_to_take*amount_list_metal[path]))
 			to_chat(user, "<span class='info'>\The [src] processes \the [O]. Levels of stored metal now: [metal]</span>")
+			playsound(src.loc, 'sound/machines/ping.ogg', 50, 1)
 			S.use(sheets_to_take)
 			return
 
@@ -98,8 +115,8 @@
 	max_metal = 0
 	max_biomass = 0
 	for(var/obj/item/weapon/stock_parts/matter_bin/bin in component_parts)
-		max_biomass += bin.rating * 5500
-		max_metal += bin.rating * 5500
+		max_biomass += bin.rating * 6875
+		max_metal += bin.rating * 6875
 	. = ..()
 
 /obj/machinery/pod_printer/attack_hand(mob/user)
@@ -130,7 +147,7 @@
 		icon_state = "on_error"
 		playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, 1)
 		src.visible_message("<span class='notice'>[src] buzzes and flashes an error message.</span>")
-		spawn(60)
+		spawn(50)
 			update_icon()
 		return
 	if(metal <= required_materials)
@@ -138,7 +155,7 @@
 		src.visible_message("<span class='notice'>[src] buzzes and flashes an error message.</span>")
 		playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, 1)
 		icon_state = "on_error"
-		spawn(60)
+		spawn(50)
 			update_icon()
 		return
 
@@ -147,7 +164,7 @@
 		icon_state = "on_error"
 		src.visible_message("<span class='notice'>[src] buzzes and flashes an error message.</span>")
 		playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, 1)
-		spawn(60)
+		spawn(50)
 			update_icon()
 		return
 	playsound(src.loc, 'sound/machines/ping.ogg', 50, 1)
@@ -158,10 +175,9 @@
 	use_power = 2
 	printing = 1
 	update_icon()
-	addtimer(CALLBACK(src, .proc/print_pod), 15 MINUTES)
+	addtimer(CALLBACK(src, .proc/print_pod), 20 MINUTES)
 	if(printing)
 		to_chat(user, "<span class='notice'>Printing in progress.</span>")
-		playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, 1)
 		return
 
 	if(!print || !printing_gender || !src || (stat & (BROKEN|NOPOWER)))
@@ -170,6 +186,9 @@
 /obj/machinery/pod_printer/Process()
 	if((stat & (BROKEN|NOPOWER)))
 		print_pod()
+	if(printing)
+		hum()
+		precent_update()
 
 /obj/machinery/pod_printer/proc/print_pod()
 	if((stat & (BROKEN|NOPOWER)) && printing)
@@ -186,7 +205,9 @@
 		return
 	playsound(src.loc, 'sound/machines/windowdoor.ogg', 50, 1)
 	src.visible_message("<span class='notice'>[src] pings and disgourges a new podmorph.</span>")
-	var/mob/living/carbon/human/blank/new_pod = new /mob/living/carbon/human/pod(get_turf(src))
+	src.visible_message("<span class='notice'>[src] beeps, 'Print complete.'</span>")
+	GLOB.global_announcer.autosay("Printing of podmorph [printing_name] complete.", "Podprinter [pod_id]", "Medical")
+	var/mob/living/carbon/human/blank/new_pod = new /mob/living/carbon/human/pod(get_step(src, EAST))
 	new_pod.gender = printing_gender
 	new_pod.regenerate_icons()
 	new_pod.check_dna()
@@ -194,3 +215,35 @@
 	printing = 0
 	use_power = 1
 	update_icon()
+
+/obj/machinery/pod_printer/proc/hum()
+	var/run_sound = pick(running_sounds)
+	if(!printing)
+		return
+	if(next_sound >= world.time)
+		return
+	src.visible_message("<span class='notice'>[src] [run_sound].</span>")
+	next_sound = world.time + rand(0.5, 2.5) MINUTES
+
+/obj/machinery/pod_printer/proc/precent_update()
+	if(printing && !print_time_set)
+		print_start = world.time
+		print_time_set = 1
+	if(printing)
+		if(world.time >= print_start + 15 MINUTES && world.time >= next_state_time)
+			GLOB.global_announcer.autosay("Printing of podmorph [printing_name] 75% complete.", "Podprinter [pod_id]", "Medical")
+			src.visible_message("<span class='notice'>[src] beeps, 'Print 75% complete.'</span>")
+			next_state_time = world.time + 5 MINUTES
+		else if(world.time >= print_start + 10 MINUTES && world.time >= next_state_time)
+			GLOB.global_announcer.autosay("Printing of podmorph [printing_name] 50% complete.", "Podprinter [pod_id]", "Medical")
+			src.visible_message("<span class='notice'>[src] beeps, 'Print 50% complete.'</span>")
+			next_state_time = world.time + 5 MINUTES
+		else if(world.time >= print_start + 5 MINUTES && world.time >= next_state_time)
+			GLOB.global_announcer.autosay("Printing of podmorph [printing_name] 25% complete.", "Podprinter [pod_id]", "Medical")
+			src.visible_message("<span class='notice'>[src] beeps, 'Print 25% complete.'</span>")
+			next_state_time = world.time + 5 MINUTES
+		else
+			return
+	if(!printing)
+		print_start = 0
+		print_time_set = 0
