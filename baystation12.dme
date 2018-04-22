@@ -2059,6 +2059,7 @@
 #include "code\modules\power\fusion\fuel_assembly\fuel_injector.dm"
 #include "code\modules\power\fusion\gyrotron\gyrotron.dm"
 #include "code\modules\power\fusion\gyrotron\gyrotron_control.dm"
+#include "code\modules\power\fusion\meltdown\meltdown_machinery.dm"
 #include "code\modules\power\sensors\powernet_sensor.dm"
 #include "code\modules\power\sensors\sensor_monitoring.dm"
 #include "code\modules\power\singularity\act.dm"
