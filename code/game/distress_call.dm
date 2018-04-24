@@ -105,7 +105,7 @@ var/global/picked_distress_call = null
 	for(var/mob/M in world)
 		if(isghost(usr) || isnewplayer(usr))
 			if(M.client)
-				to_chat(M, "<font size='3'>\red An emergency beacon has been activated. Use the <B>Join Distress Team</b> verb, <B>IC tab</b>, to join!</font>")
+				to_chat(M, "<font size='3'><span class='danger'>An emergency beacon has been activated. Use the <B>Join Distress Team</b> verb, <B>IC tab</b>, to join!</span></font>")
 
 
 /client/verb/JoinDistressTeam()
@@ -145,14 +145,14 @@ var/global/picked_distress_call = null
 
 	can_call_ert = 0 // Only one call per round, gentleman.
 	send_distress_team = 1
-	distress_equiptment_spawn()
+	distress_equipment_spawn()
 	show_join_message()
 	spawn(600 * 5)
 		send_distress_team = 0 // Can no longer join the ERT.
 
 //Variable equiptment spawning handled below
 
-/datum/game_mode/proc/distress_equiptment_spawn()
+/datum/game_mode/proc/distress_equipment_spawn()
 	var/obj/effect/landmark/L
 	for(L in world)
 		if(L.name == "distress_armor")
