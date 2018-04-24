@@ -136,6 +136,7 @@ var/global/datum/controller/gameticker/ticker
 
 	else
 		src.mode.announce()
+	mode.initialize_emergency_calls()
 
 	GLOB.using_map.setup_economy()
 	current_state = GAME_STATE_PLAYING
