@@ -159,8 +159,8 @@ client/verb/JoinDistressTeam()
 	send_distress_team = 1
 	distress_equiptment_spawn()
 	show_join_message()
-	sleep(600 * 5)
-	send_distress_team = 0 // Can no longer join the ERT.
+	spawn(600 * 5)
+		send_distress_team = 0 // Can no longer join the ERT.
 
 //Variable equiptment spawning handled below
 
