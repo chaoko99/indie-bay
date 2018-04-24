@@ -108,7 +108,7 @@ var/global/picked_distress_call = null
 				to_chat(M, "<font size='3'>\red An emergency beacon has been activated. Use the <B>Join Distress Team</b> verb, <B>IC tab</b>, to join!</font>")
 
 
-client/verb/JoinDistressTeam()
+/client/verb/JoinDistressTeam()
 
 	set name = "Join Distress Response Team"
 	set category = "IC"
