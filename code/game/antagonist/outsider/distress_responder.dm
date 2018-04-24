@@ -8,16 +8,16 @@ var/datum/antagonist/distress_response/distress_response
 	antag_text = "You are a potential antagonist! Pay attention to the stated text and your mission."
 	leader_welcome_text = "You shouldn't see this"
 	landmark_id = "Response Team"
-	id_type = /obj/item/weapon/card/id/centcom/ERT
+	id_type = /obj/item/weapon/card/id
 	var/antag_objective = null //We're special so this gets handled here!
 
 	flags = ANTAG_OVERRIDE_JOB | ANTAG_SET_APPEARANCE | ANTAG_HAS_LEADER | ANTAG_CHOOSE_NAME | ANTAG_RANDOM_EXCEPTED
 	antaghud_indicator = "hudloyalist"
 
-	hard_cap = 5
-	hard_cap_round = 7
-	initial_spawn_req = 5
-	initial_spawn_target = 7
+	hard_cap = 4
+	hard_cap_round = 4
+	initial_spawn_req = 4
+	initial_spawn_target = 4
 	show_objectives_on_creation = 1 //we are not antagonists, we do not need the antagonist shpiel/objectives
 
 /datum/antagonist/distress_response/create_default(var/mob/source)
