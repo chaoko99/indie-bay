@@ -72,7 +72,6 @@ var/global/picked_distress_call = null
 
 	var/list/total_calls = typesof(/datum/distress_call)
 	if(!total_calls.len)
-		world << "\red \b Error setting up distress calls, no datums found."
 		return 0
 	for(var/S in total_calls)
 		var/datum/distress_call/C = new S()
@@ -93,7 +92,6 @@ var/global/picked_distress_call = null
 		break
 
 	if(!istype(chosen_call))
-		world << "\red Something went wrong with emergency calls. Tell a coder!"
 		return null
 	else
 		return chosen_call
@@ -103,21 +101,11 @@ var/global/picked_distress_call = null
 	P = picked_call
 	distress_team_type = P.equipt_tag
 
-/datum/game_mode/proc/distress_test() //Debug proc.
-	picked_call = get_random_call()
-	picked_distress_call = picked_call
-	if(!picked_call)
-		world << "ERROR IN PICKING DISTRESS CALL"
-	setup_equipt()
-	if(!distress_team_type)
-		world << "ERROR IN SETTING UP DISTRESS TEAM EQUIPTMENT"
-
-
 /datum/game_mode/proc/show_join_message()
 	for(var/mob/M in world)
 		if(isghost(usr) || isnewplayer(usr))
 			if(M.client)
-				M << "<font size='3'>\red An emergency beacon has been activated. Use the <B>Join Distress Team</b> verb, <B>IC tab</b>, to join!</font>"
+				to_chat(M, "<font size='3'>\red An emergency beacon has been activated. Use the <B>Join Distress Team</b> verb, <B>IC tab</b>, to join!</font>")
 
 
 client/verb/JoinDistressTeam()
@@ -176,9 +164,8 @@ client/verb/JoinDistressTeam()
 						new /obj/item/clothing/mask/gas(get_turf(L))
 				if(2)
 					for(var/i = 1 to 3)
-						new /obj/item/clothing/suit/armor/pcarrier/blue/sol(get_turf(L))
-						new /obj/item/clothing/head/helmet/solgov(get_turf(L))
-						new /obj/item/clothing/head/beret/solgov/orbital(get_turf(L))
+						new /obj/item/clothing/suit/armor/vest/ert(get_turf(L))
+						new /obj/item/clothing/head/helmet/ert(get_turf(L))
 						new /obj/item/clothing/mask/gas(get_turf(L))
 				if(3)
 					for(var/i = 1 to 3)
