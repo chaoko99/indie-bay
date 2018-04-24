@@ -285,9 +285,6 @@
 	name = "\improper Transport Shuttle Centcom"
 
 //torch large pods
-/area/shuttle/escape_pod6/station
-	name = "Escape Pod One"
-	area_flags = AREA_FLAG_RAD_SHIELDED
 
 /area/shuttle/escape_pod7/station
 	name = "Escape Pod Two"
@@ -295,10 +292,6 @@
 
 /area/shuttle/escape_pod8/station
 	name = "Escape Pod Three"
-	area_flags = AREA_FLAG_RAD_SHIELDED
-
-/area/shuttle/escape_pod9/station
-	name = "Escape Pod Four"
 	area_flags = AREA_FLAG_RAD_SHIELDED
 
 /area/shuttle/escape_pod10/station
@@ -373,28 +366,6 @@
 	requires_power = 1
 	dynamic_lighting = 1
 	area_flags = AREA_FLAG_RAD_SHIELDED
-
-
-//Petrov
-
-/area/shuttle/petrov
-	name = "\improper NSV Petrov"
-	requires_power = 1
-	dynamic_lighting = 1
-	area_flags = AREA_FLAG_RAD_SHIELDED
-
-/area/shuttle/petrov/ship
-	icon_state = "shuttlered"
-
-/area/shuttle/petrov/cell1
-	name = "\improper NSV Petrov - Isolation Cell 1"
-	icon_state = "shuttle"
-/area/shuttle/petrov/cell2
-	name = "\improper NSV Petrov - Isolation Cell 2"
-	icon_state = "shuttlegrn"
-/area/shuttle/petrov/cell3
-	name = "\improper NSV Petrov - Isolation Cell 3"
-	icon_state = "shuttle"
 
 //Turbolift
 /area/turbolift
@@ -703,6 +674,19 @@
 
 // Supply
 
+/area/quartermaster/office
+	name = "\improper Supply Office"
+	icon_state = "quartoffice"
+
+/area/quartermaster/storage
+	name = "\improper Warehouse"
+	icon_state = "quartstorage"
+	sound_env = LARGE_ENCLOSED
+
+/area/quartermaster/storage/aux
+	name = "\improper Auxiliary Warehouse"
+	icon_state = "wareauxstorage"
+
 /area/quartermaster/deckofficer
 	name = "\improper Deck Officer"
 	icon_state = "quart"
@@ -864,6 +848,27 @@
 	name = "\improper First Deck Security Office"
 	icon_state = "checkpoint"
 
+/area/prison/solitary
+	name = "Solitary Confinement"
+	icon_state = "brig"
+
+/area/security/armoury
+	name = "\improper Security - Armory"
+	icon_state = "Warden"
+
+/area/security/detectives_office
+	name = "\improper Security - Forensic Office"
+	icon_state = "detective"
+	sound_env = MEDIUM_SOFTFLOOR
+
+/area/security/nuke_storage
+	name = "\improper Vault"
+	icon_state = "nuke_storage"
+
+/area/security/range
+	name = "\improper Security - Firing Range"
+	icon_state = "firingrange"
+
 // AI
 /area/turret_protected/ai_foyer
 	name = "\improper AI Chamber Foyer"
@@ -928,12 +933,6 @@
 /area/shield/thirddeck
 	name = "\improper Third Deck Shield Generator"
 
-/area/shield/fourthdeck
-	name = "\improper Fourth Deck Shield Generator"
-/*
-/area/shield/fifthdeck
-	name = "\improper Fifth Deck Shield Generator"
-*/
 // Misc
 /area/deity_spawn
 	name = "\improper Deity Spawn"
@@ -1273,43 +1272,6 @@
 	icon_state = "shuttle3"
 	requires_power = 0
 
-// Security
-
-/area/prison/solitary
-	name = "Solitary Confinement"
-	icon_state = "brig"
-
-/area/security/armoury
-	name = "\improper Security - Armory"
-	icon_state = "Warden"
-
-/area/security/checkpoint2
-	name = "\improper Security - Checkpoint"
-	icon_state = "checkpoint1"
-
-/area/security/detectives_office
-	name = "\improper Security - Forensic Office"
-	icon_state = "detective"
-	sound_env = MEDIUM_SOFTFLOOR
-
-/area/security/nuke_storage
-	name = "\improper Vault"
-	icon_state = "nuke_storage"
-
-/area/security/range
-	name = "\improper Security - Firing Range"
-	icon_state = "firingrange"
-
-// Cargo
-/area/quartermaster/office
-	name = "\improper Supply Office"
-	icon_state = "quartoffice"
-
-/area/quartermaster/storage
-	name = "\improper Warehouse"
-	icon_state = "quartstorage"
-	sound_env = LARGE_ENCLOSED
-
 // Crew
 
 /area/crew_quarters/sleep/cryo
@@ -1323,6 +1285,10 @@
 /area/janitor
 	name = "\improper Custodial Closet"
 	icon_state = "janitor"
+
+/area/laundry
+	name = "\improper Laundry Room"
+	icon_state = "laundry"
 
 // Tcomm
 /area/tcommsat/

@@ -26,19 +26,17 @@
 		/area/outpost/abandoned = NO_SCRUBBER,
 		/area/rescue_base = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/shield/bridge = NO_SCRUBBER|NO_VENT,
-		/area/shield/fourthdeck = NO_SCRUBBER|NO_VENT,
 		/area/shield/thirddeck = NO_SCRUBBER|NO_VENT,
 		/area/shield/firstdeck = NO_SCRUBBER|NO_VENT,
 		/area/shield/seconddeck = 0,
 		/area/shuttle = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/shuttle/merchant = NO_SCRUBBER|NO_APC,
-		/area/shuttle/petrov = 0,
 		/area/skipjack_station = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/solar = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/space = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/storage = NO_SCRUBBER|NO_VENT,
 		/area/storage/auxillary/port = 0,
-		/area/storage/auxillary/starboard = 0,
+		/area/storage/auxillary/starboard = NO_APC,
 		/area/storage/primary = 0,
 		/area/storage/tech = 0,
 		/area/storage/tools = 0,
@@ -58,11 +56,11 @@
 		/area/vacant/monitoring = NO_SCRUBBER|NO_VENT,
 		/area/vacant/office = 0,
 		/area/rnd/blanks = NO_SCRUBBER|NO_VENT,
-		/area/exoplanet          = NO_SCRUBBER|NO_VENT|NO_APC,
-		/area/exoplanet/desert   = NO_SCRUBBER|NO_VENT|NO_APC,
-		/area/exoplanet/grass    = NO_SCRUBBER|NO_VENT|NO_APC,
-		/area/exoplanet/snow     = NO_SCRUBBER|NO_VENT|NO_APC,
-		/area/exoplanet/garbage  = NO_SCRUBBER|NO_VENT|NO_APC,
+		/area/exoplanet = NO_SCRUBBER|NO_VENT|NO_APC,
+		/area/exoplanet/desert = NO_SCRUBBER|NO_VENT|NO_APC,
+		/area/exoplanet/grass = NO_SCRUBBER|NO_VENT|NO_APC,
+		/area/exoplanet/snow = NO_SCRUBBER|NO_VENT|NO_APC,
+		/area/exoplanet/garbage = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/smugglers/base = NO_SCRUBBER,
 		/area/smugglers/dorms = NO_SCRUBBER|NO_VENT,
 		/area/smugglers/office = NO_SCRUBBER|NO_VENT,
@@ -72,6 +70,9 @@
 		/area/mobius_rift = NO_SCRUBBER|NO_VENT|NO_APC,
 		/area/icarus/vessel = NO_APC,
 		/area/icarus/open = NO_SCRUBBER|NO_VENT|NO_APC,
+		/area/quartermaster/storage/aux = NO_SCRUBBER|NO_VENT|NO_APC,
+		/area/storage/auxillary/starboard = NO_SCRUBBER|NO_VENT|NO_APC,
+		/area/maintenance/disposal = 0
 	)
 
 	area_coherency_test_exempt_areas = list(
@@ -145,10 +146,6 @@
 /datum/unit_test/zas_area_test/ai_chamber
 	name = "ZAS: AI Chamber"
 	area_path = /area/turret_protected/ai
-
-/datum/unit_test/zas_area_test/cargo_bay
-	name = "ZAS: Cargo Bay"
-	area_path = /area/quartermaster/storage
 
 datum/unit_test/zas_area_test/supply_centcomm
 	name = "ZAS: Supply Shuttle (CentComm)"
