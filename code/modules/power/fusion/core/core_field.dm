@@ -39,6 +39,12 @@
 
 	var/last_range
 	var/last_power
+	//Meltdown variables.
+	var/meltdown_start_time = null //When did we start melting down?
+	var/list/interlocks = list() //What are our interlocks?
+	var/meltdown_time = null //When are we going to melt down?
+	var/interlocks_located = 0 //Have we found our interlocks?
+	var/id = null //What's our indentification?
 
 /obj/effect/fusion_em_field/New(loc, var/obj/machinery/power/fusion_core/new_owned_core)
 	..()
@@ -205,8 +211,8 @@
 	return
 
 /obj/effect/fusion_em_field/proc/Rupture()
-	visible_message("<span class='danger'>\The [src] shudders like a dying animal before flaring to eye-searing brightness and rupturing!</span>")
-	set_light(15, 15, "#ccccff")
+	visible_message("<span class='danger'>\The [src] shudders like a dying animal before flaring to eye-searing brightness before rupturing!</span>")
+	set_light(30, 30, "#ccccff")
 	empulse(get_turf(src), ceil(plasma_temperature/1000), ceil(plasma_temperature/300))
 	sleep(5)
 	RadiateAll()
@@ -481,6 +487,15 @@
 		light_max_range = 5
 		light_max_power = 5
 		set_light(light_max_range,light_max_power)
+	return
+//procs for the meltdown system below
+/obj/effect/fusion_em_field/proc/Meltdown()
+	visible_message("<span class='danger'>\The [src] shudders like a dying animal before flaring to eye-searing brightness, barely contained by the solenoid!</span>")
+	set_light(30, 30, "#ccccff")
+	empulse(get_turf(src), ceil(plasma_temperature/1000), ceil(plasma_temperature/300))
+	sleep(5)
+	RadiateAll()
+	explosion(get_turf(owned_core),-1,-1,8,10) // Blow out all the windows.
 	return
 
 #undef FUSION_HEAT_CAP
