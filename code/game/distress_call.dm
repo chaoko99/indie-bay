@@ -55,12 +55,12 @@ var/global/picked_distress_call = null
 	equipt_tag = SYNDICATE_COMMANDOS
 
 /datum/distress_call/frontier_hicks
-    distress_name = "Frontier Hauler"
-    arrival_message = "Howdy, fellers! Heard you's in some distress while we're passin' by! Folks look out for each other in these parts!"
-    probability = 50
-    objectives = "Help out the ship, but don't get killed doing it."
-    ship_name = "IHV Wanderlust"
-    equipt_tag = FRONTIER_HICKS
+	distress_name = "Frontier Hauler"
+	arrival_message = "Howdy, fellers! Heard you's in some distress while we're passin' by! Folks look out for each other in these parts!"
+	probability = 50
+	objectives = "Help out the ship, but don't get killed doing it."
+	ship_name = "IHV Wanderlust"
+	equipt_tag = FRONTIER_HICKS
 
 /datum/game_mode
 	var/list/all_calls = list() //initialized at round start and stores the datums.
