@@ -347,6 +347,10 @@
 			return global.description_icons;
 		if("diary")
 			return global.diary;
+		if("distress_response")
+			return global.distress_response;
+		if("distress_team_type")
+			return global.distress_team_type;
 		if("dna_activity_bounds")
 			return global.dna_activity_bounds;
 		if("dna_genes")
@@ -695,6 +699,8 @@
 			return global.paramslist_cache;
 		if("photo_count")
 			return global.photo_count;
+		if("picked_distress_call")
+			return global.picked_distress_call;
 		if("pipe_colors")
 			return global.pipe_colors;
 		if("pipe_processing_killed")
@@ -811,6 +817,8 @@
 			return global.secondary_mode;
 		if("secret_force_mode")
 			return global.secret_force_mode;
+		if("send_distress_team")
+			return global.send_distress_team;
 		if("send_emergency_team")
 			return global.send_emergency_team;
 		if("sent_spiders_to_station")
@@ -1388,6 +1396,10 @@
 			global.description_icons=newval;
 		if("diary")
 			global.diary=newval;
+		if("distress_response")
+			global.distress_response=newval;
+		if("distress_team_type")
+			global.distress_team_type=newval;
 		if("dna_activity_bounds")
 			global.dna_activity_bounds=newval;
 		if("dna_genes")
@@ -1736,6 +1748,8 @@
 			global.paramslist_cache=newval;
 		if("photo_count")
 			global.photo_count=newval;
+		if("picked_distress_call")
+			global.picked_distress_call=newval;
 		if("pipe_colors")
 			global.pipe_colors=newval;
 		if("pipe_processing_killed")
@@ -1852,6 +1866,8 @@
 			global.secondary_mode=newval;
 		if("secret_force_mode")
 			global.secret_force_mode=newval;
+		if("send_distress_team")
+			global.send_distress_team=newval;
 		if("send_emergency_team")
 			global.send_emergency_team=newval;
 		if("sent_spiders_to_station")
@@ -2255,6 +2271,8 @@
 	"department_radio_keys",
 	"description_icons",
 	"diary",
+	"distress_response",
+	"distress_team_type",
 	"dna_activity_bounds",
 	"dna_genes",
 	"doppler_arrays",
@@ -2429,6 +2447,7 @@
 	"pai_software_by_key",
 	"paramslist_cache",
 	"photo_count",
+	"picked_distress_call",
 	"pipe_colors",
 	"pipe_processing_killed",
 	"plant_controller",
@@ -2487,6 +2506,7 @@
 	"same_wires",
 	"secondary_mode",
 	"secret_force_mode",
+	"send_distress_team",
 	"send_emergency_team",
 	"sent_spiders_to_station",
 	"server_name",
