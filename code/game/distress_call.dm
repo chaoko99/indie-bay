@@ -16,6 +16,7 @@ var/global/picked_distress_call = null
 /datum/distress_call
 	var/distress_name = "name" //What are we called?
 	var/dispatch_message = "An encrypted signal from a nearby vessel has been detected. Decoding." //The response message.
+	var/dispatch_fail_message = null
 	var/arrival_message = null //What do we state when we dock?
 	var/objectives = null //What is the response team's objective?
 	var/probability = 0 //How likely is this to happen?
@@ -24,7 +25,8 @@ var/global/picked_distress_call = null
 
 /datum/distress_call/helping_hand
 	distress_name = "Helping Hand"
-	arrival_message = "This is the ISV Helping Hand. A boarding team is on it's way to assist. Please don't shoot us."
+	arrival_message = "This is the ISV Helping Hand. We'll put a boarding team together to assist. Please don't shoot us."
+	dispatch_fail_message = "Sorry! We don't have the resources to help you right now! We'll pass the request on to anyone we see though."
 	probability = 20
 	objectives = "Help the crew of the ship and defeat the antagonists."
 	ship_name = "ISV Helping Hand"
@@ -33,6 +35,7 @@ var/global/picked_distress_call = null
 /datum/distress_call/solgov_enforcers
 	distress_name = "Solgov Enforcers"
 	arrival_message = "This is the SCGF Indomitable. Lay down your arms and prepare to be boarded. Your ship is now being returned to it's rightful owners."
+	dispatch_fail_message = "What? Vox raiders? Forget the scrapheap. We have Vox to kill."
 	probability = 10
 	objectives = "Reclaim the ship, for the glory of Solgov! Kill or detain anyone who resists your commands."
 	ship_name = "SCGF Indomitable"
@@ -41,6 +44,7 @@ var/global/picked_distress_call = null
 /datum/distress_call/raiders
 	distress_name = "Raiders"
 	arrival_message = "Attention prey. You and all your possessions are now our personal property. Resist, and you will be disabled, boarded, your officers massacred, and your crew sold as slaves."
+	dispatch_fail_message = "Huh! Looks like you get away this time, little fish."
 	probability = 10
 	objectives = "Ransack the ship, and kidnap who you can."
 	ship_name = "Unknown Vessel"
@@ -49,6 +53,7 @@ var/global/picked_distress_call = null
 /datum/distress_call/syndicate_strike
 	distress_name = "Syndicate Striketeam"
 	arrival_message = "This is the SMV God's Fist. Your ship and it's crew are now our property. Any resistance will be met with lethal force."
+	dispatch_fail_message = "A solgov patrol? Let's deal with them first..."
 	probability = 10
 	objectives = "Capture the ship. Kill anyone who resists. Enslave the crew."
 	ship_name = "SMV God's Fist"
@@ -57,6 +62,7 @@ var/global/picked_distress_call = null
 /datum/distress_call/frontier_hicks
 	distress_name = "Frontier Hauler"
 	arrival_message = "Howdy, fellers! Heard you's in some distress while we're passin' by! Folks look out for each other in these parts!"
+	dispatch_fail_message = "Sorry, fellas! We ain't got the stuff to help y'all."
 	probability = 50
 	objectives = "Help out the ship, but don't get killed doing it."
 	ship_name = "IHV Wanderlust"
@@ -139,7 +145,7 @@ var/global/picked_distress_call = null
 	picked_call = get_random_call()
 	setup_equipt()
 	P = picked_call
-	command_announcement.Announce("[P.arrival_message]", "[P.ship_name]")
+	command_announcement.Announce("[P.dispatch_message]", "Distress Beacon")
 	distress_team_type = P.equipt_tag
 	evacuation_controller.add_can_call_predicate(new/datum/evacuation_predicate/ert())
 
@@ -147,8 +153,13 @@ var/global/picked_distress_call = null
 	send_distress_team = 1
 	distress_equipment_spawn()
 	show_join_message()
+	spawn(500)
+		command_announcement.Announce("[P.arrival_message]", "[P.ship_name]")
 	spawn(600 * 5)
 		send_distress_team = 0 // Can no longer join the ERT.
+		if(!distress_response.current_antagonists.len)
+			command_announcement.Announce("[P.dispatch_fail_message]", "[P.ship_name]")
+
 
 //Variable equiptment spawning handled below
 
