@@ -1,4 +1,4 @@
-
+///Currently broken as all these zones have been removed from the map.
 /datum/map/torch
 
 	holodeck_programs = list(

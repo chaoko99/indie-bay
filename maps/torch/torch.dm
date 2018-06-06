@@ -3,7 +3,7 @@
 	#include "torch_announcements.dm"
 	#include "torch_areas.dm"
 	#include "torch_elevator.dm"
-	#include "torch_holodecks.dm"
+//	#include "torch_holodecks.dm" //Not used on Indiebay.
 	#include "torch_overmap.dm"
 	#include "torch_presets.dm"
 	#include "torch_ranks.dm"

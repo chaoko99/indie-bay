@@ -76,8 +76,6 @@
 		/area/maintenance,
 		/area/rnd,
 		/area/rnd/xenobiology,
-		/area/rnd/xenobiology/xenoflora,
-		/area/rnd/xenobiology/xenoflora_storage,
 		/area/shuttle,
 		/area/shuttle/escape,
 		/area/shuttle/escape/centcom,

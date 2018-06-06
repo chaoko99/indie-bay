@@ -37,8 +37,8 @@
 		/area/overmap,
 		/area/rnd,
 		/area/rnd/xenobiology,
-		/area/rnd/xenobiology/xenoflora,
-		/area/rnd/xenobiology/xenoflora_storage,
+//		/area/rnd/xenobiology/xenoflora, //Not used on Indiebay at the moment.
+//		/area/rnd/xenobiology/xenoflora_storage,
 		/area/security,
 		/area/security/prison,
 		/area/security/brig,
