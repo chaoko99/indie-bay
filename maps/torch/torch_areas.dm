@@ -142,11 +142,11 @@
 
 /area/maintenance/substation/thirddeck
 	name = "Third Deck Substation"
-
+/*unused.
 /area/crew_quarters/safe_room/thirddeck
 	name = "\improper Third Deck Safe Room"
 	area_flags = AREA_FLAG_RAD_SHIELDED
-
+*/
 
 //Second Deck (Z-3)
 /area/maintenance/seconddeck
@@ -594,10 +594,6 @@
 	name = "\improper Vacant Area"
 	icon_state = "construction"
 
-/area/vacant/armory
-	name = "\improper Marine Armory"
-	icon_state = "Tactical"
-
 /area/vacant/cabin
 	name = "\improper Vacant Cabins"
 	icon_state = "crew_quarters"
@@ -622,6 +618,10 @@
 	name = "\improper Prototype Fusion Reactor Chamber"
 	icon_state = "firingrange"
 
+/area/vacant/research/
+	name = "\improper Research and Development Digout -- Report to D2 for replacement dept"
+	icon_state = "research"
+	sound_env = SMALL_ENCLOSED
 
 /area/vacant/cargo
 	name = "\improper Requisitions Office"
@@ -635,13 +635,12 @@
 	name = "\improper Third Deck Port Missile Pod"
 	icon_state = "firingrange"
 
-/area/vacant/brig
-	name = "\improper Permanent Brig"
-	icon_state = "brig"
-
 /area/vacant/office
 	name = "\improper Unused Office"
 	icon_state = "conference"
+
+/area/vacant/tearout/
+	name = "\improper Unused Space"
 
 // Storage
 /area/storage/auxillary/port
@@ -737,14 +736,10 @@
 	name = "\improper Xenobiology Access"
 	icon_state = "xeno_lab"
 
-/area/rnd/checkpoint
-	name = "\improper Research Security Checkpoint"
-	icon_state = "checkpoint1"
-
-/area/rnd/blanks
-	name = "\improper Aux Custodial Supplies"
+/area/rnd/backroom
+	name = "\improper Research Storage Room"
 	icon_state = "decontamination"
-	area_flags = AREA_FLAG_RAD_SHIELDED
+	sound_env = SMALL_ENCLOSED
 
 // Crew areas
 /area/crew_quarters/bar
@@ -805,11 +800,11 @@
 	name = "\improper Diplomatic Quarters"
 	icon_state = "Sleep"
 	sound_env = SMALL_SOFTFLOOR
-
+/*
 /area/holocontrol
 	name = "\improper Holodeck Control"
 	icon_state = "Holodeck"
-
+*/
 /area/hydroponics/storage
 	name = "\improper Hydroponics Storage"
 
@@ -908,6 +903,18 @@
 	name = "\improper Mental Health"
 	icon_state = "medbay3"
 	ambience = list('sound/ambience/signal.ogg')
+
+//Secondary Medbay
+
+/area/medical/secondary
+	name = "\improper Secondary Medbay"
+	icon_state = "medbay"
+	sound_env = HALLWAY
+
+/area/medical/secondary/surgery
+	name = "\improper Secondary Surgery Theater"
+	icon_state = "exam_room"
+	sound_env = SMALL_ENCLOSED
 
 // Chapel
 /area/chapel/crematorium
@@ -1080,7 +1087,7 @@
 /area/storage/tools
 	name = "Auxiliary Tool Storage"
 	icon_state = "auxstorage"
-
+/*
 // Holodecks
 
 /area/holodeck
@@ -1146,7 +1153,7 @@
 	name = "\improper Holodeck - Space"
 	has_gravity = 0
 	sound_env = SPACE
-
+*/
 // Engineering
 
 /area/engineering/engine_room
@@ -1231,11 +1238,11 @@
 /area/rnd/misc_lab
 	name = "\improper Miscellaneous Research"
 	icon_state = "misclab"
-
+/* Unused.
 /area/rnd/research
 	name = "\improper Research and Development"
 	icon_state = "research"
-
+*/
 /area/rnd/breakroom
 	name = "\improper Research Break Room"
 	icon_state = "researchbreak"

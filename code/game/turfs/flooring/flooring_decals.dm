@@ -10,26 +10,36 @@ var/list/floor_decals = list()
 	layer = DECAL_LAYER
 	appearance_flags = RESET_COLOR
 	var/supplied_dir
+	var/scuffchance = 5
 
 /obj/effect/floor_decal/New(var/newloc, var/newdir, var/newcolour)
 	supplied_dir = newdir
 	if(newcolour) color = newcolour
 	..(newloc)
 
-/obj/effect/floor_decal/Initialize()
+/obj/effect/floor_decal/Initialize(var/mapload)
 	if(supplied_dir) set_dir(supplied_dir)
 	var/turf/T = get_turf(src)
 	if(istype(T, /turf/simulated/floor) || istype(T, /turf/unsimulated/floor))
 		plane = T.is_plating() ? ABOVE_PLATING_PLANE : ABOVE_TURF_PLANE
-		var/cache_key = "[alpha]-[color]-[dir]-[icon_state]-[plane]-[layer]"
+		var/scuffed = prob(scuffchance) * mapload
+		var/cache_key = "[alpha]-[color]-[dir]-[icon_state]-[plane]-[layer]-[scuffed]"
+
 		if(!floor_decals[cache_key])
-			var/image/I = image(icon = src.icon, icon_state = src.icon_state, dir = src.dir)
-			I.plane = plane
-			I.layer = layer
-			I.appearance_flags = appearance_flags
-			I.color = src.color
-			I.alpha = src.alpha
-			floor_decals[cache_key] = I
+			var/icon/I = new (icon = src.icon, icon_state = src.icon_state, dir = src.dir)
+			if(scuffed)
+				var/icon/scuffs = new(icon = icon = 'icons/turf/flooring/decals.dmi', icon_state = "scuffs", dir = src.dir)
+				I.AddAlphaMask(scuffs)
+
+			var/image/F =  image(I) //Apparently you can just instantly convert icons to images. Super convenient.
+			F.plane = plane
+			F.layer = layer
+			F.appearance_flags = appearance_flags
+			F.color = src.color
+			F.alpha = src.alpha
+
+			floor_decals[cache_key] = F
+
 		if(!T.decals) T.decals = list()
 		T.decals |= floor_decals[cache_key]
 		T.overlays |= floor_decals[cache_key]
@@ -333,6 +343,8 @@ var/list/floor_decals = list()
 /obj/effect/floor_decal/industrial/warning
 	name = "hazard stripes"
 	icon_state = "warning"
+	layer = DECAL_LAYER + 0.005
+
 
 /obj/effect/floor_decal/industrial/warning/corner
 	icon_state = "warningcorner"
@@ -401,6 +413,16 @@ var/list/floor_decals = list()
 	name = "loading area"
 	icon_state = "loadingarea"
 	alpha = 229
+
+/obj/effect/floor_decal/industrial/xenos
+	name = "hazard stripes"
+	icon_state = "xenos"
+	layer = DECAL_LAYER + 0.006
+
+
+/obj/effect/floor_decal/industrial/xenos/corner
+	icon_state = "xenoscorner"
+
 
 /obj/effect/floor_decal/plaque
 	name = "plaque"
@@ -529,6 +551,8 @@ var/list/floor_decals = list()
 	color = COLOR_GUNMETAL
 	icon_state = "manydot"
 	appearance_flags = 0
+	scuffchance = 0 //Physical features don't scuff.
+	layer = DECAL_LAYER + 0.01
 
 /obj/effect/floor_decal/floordetail/New(var/newloc, var/newdir, var/newcolour)
 	color = null //color is here just for map preview, if left it applies both our and tile colors.
